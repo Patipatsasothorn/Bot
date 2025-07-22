@@ -1,0 +1,199 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>เข้าสู่ระบบ</title>
+    <link rel="stylesheet" href="~/css/login.css" asp-append-version="true" />
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h1>เข้าสู่ระบบ</h1>
+            <p>ยินดีต้อนรับกลับมา! กรุณาเข้าสู่ระบบ</p>
+        </div>
+
+        <!-- สำหรับแสดงข้อความผิดพลาด -->
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+
+        <!-- Form สำหรับ C# MVC -->
+        <form id="loginForm" method="post" action="/Account/Login">
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <label for="email">อีเมล</label>
+                <input type="email" id="email" name="email" placeholder="กรุณากรอกอีเมล" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">รหัสผ่าน</label>
+                <input type="password" id="password" name="password" placeholder="กรุณากรอกรหัสผ่าน" required>
+                <span class="password-toggle" onclick="togglePassword()">👁️</span>
+            </div>
+
+            <div class="form-options">
+                <div class="remember-me">
+                    <input type="checkbox" id="rememberMe" name="rememberMe">
+                    <label for="rememberMe">จดจำการเข้าสู่ระบบ</label>
+                </div>
+                <a href="/Account/ForgotPassword" class="forgot-password">ลืมรหัสผ่าน?</a>
+            </div>
+
+            <button type="submit" class="login-btn" id="loginButton">
+                เข้าสู่ระบบ
+            </button>
+        </form>
+
+        @if (ViewBag.Error != null)
+        {
+            <div id="errorMessage" class="error-message">@ViewBag.Error</div>
+        }
+        else
+        {
+            <div id="errorMessage" class="error-message" style="display:none;"></div>
+        }
+
+
+        <div class="divider">
+            <span>หรือ</span>
+        </div>
+
+        <div class="register-link">
+            ยังไม่มีบัญชี? <a href="/Account/Register">สมัครสมาชิก</a>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+   <script>
+    document.addEventListener('DOMContentLoaded', function () {
+          var errorMsg = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(TempData["Error"] ?? ""));
+            console.log("Error from TempData:", errorMsg);
+            if (errorMsg) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'เกิดข้อผิดพลาด',
+                    text: errorMsg,
+                    confirmButtonText: 'ตกลง'
+                });
+            }
+        // Toggle password visibility
+        function togglePassword() {
+            const passwordInput = document.getElementById('password');
+            const toggleIcon = document.querySelector('.password-toggle');
+
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = '👁️';
+            }
+        }
+
+        const toggleIcon = document.querySelector('.password-toggle');
+        if (toggleIcon) {
+            toggleIcon.addEventListener('click', togglePassword);
+        }
+
+        // Form validation and submission
+        const loginForm = document.getElementById('loginForm');
+        if (loginForm) {
+            loginForm.addEventListener('submit', function (e) {
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value.trim();
+                const errorDiv = document.getElementById('errorMessage');
+                const successDiv = document.getElementById('successMessage');
+
+                // Hide previous messages
+                if (errorDiv) errorDiv.style.display = 'none';
+                if (successDiv) successDiv.style.display = 'none';
+
+                // Basic validation
+                if (!email || !password) {
+                    e.preventDefault();
+                    showError('กรุณากรอกอีเมลและรหัสผ่าน');
+                    return;
+                }
+
+                if (!isValidEmail(email)) {
+                    e.preventDefault();
+                    showError('รูปแบบอีเมลไม่ถูกต้อง');
+                    return;
+                }
+
+                // Show loading state
+                const loginButton = document.getElementById('loginButton');
+                if (loginButton) {
+                    loginButton.textContent = 'กำลังเข้าสู่ระบบ...';
+                    loginButton.disabled = true;
+                }
+            });
+        }
+
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s]+[^\s]+\.[^\s]+$/;
+            return emailRegex.test(email);
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            if (errorDiv) {
+                errorDiv.textContent = message;
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            if (successDiv) {
+                successDiv.textContent = message;
+                successDiv.style.display = 'block';
+            }
+        }
+
+        // Add smooth focus animations
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('focus', function () {
+                this.parentElement.classList.add('focused');
+            });
+
+            input.addEventListener('blur', function () {
+                this.parentElement.classList.remove('focused');
+            });
+        });
+
+        // Add ripple effect to login button
+        const loginBtn = document.querySelector('.login-btn');
+        if (loginBtn) {
+            loginBtn.addEventListener('click', function (e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+
+                this.appendChild(ripple);
+
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        }
+    });
+</script>
+
+</body>
+
+</html>

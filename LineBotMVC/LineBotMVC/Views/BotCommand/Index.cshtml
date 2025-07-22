@@ -1,0 +1,242 @@
+﻿@model IEnumerable<BotCommand>
+
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="container-fluid">
+    <div class="header mt-4">
+        <h1>🚀 รายการคำสั่ง</h1>
+        <p>จัดการคำสั่งต่างๆ ของระบบ</p>
+        <a href="@Url.Action("Create", "BotCommand")" class="add-btn">
+            ➕ เพิ่มคำสั่งใหม่
+        </a>
+        <a href="@Url.Action("Create", "LineBot")" class="add-btn">
+            ➕ เพิ่ม LineBot
+        </a>
+        <div class="form-group mt-4 mb-3">
+            <label for="botLineSelect">เลือกบอท:</label>
+            <div style="text-align: center; margin-bottom: 1rem;">
+                <select id="botLineSelect" onchange="filterByBotLine()" class="form-select" style="max-width: 300px; display: inline-block;">
+                    <option value="">-- กรุณาเลือกบอท --</option>
+                    @foreach (var bot in ViewBag.BotLines)
+                    {
+                        <option value="@bot.BotLineToken" selected="@(ViewBag.SelectedBotLineToken == bot.BotLineToken ? "selected" : null)">
+                            @bot.BotLineName
+                        </option>
+                    }
+                </select>
+            </div>
+
+        </div>
+    </div>
+
+
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="🔍 ค้นหาคำสั่ง..." onkeyup="searchCommands(this.value)">
+    </div>
+
+    @if (!string.IsNullOrEmpty(ViewBag.SelectedBotLineToken))
+    {
+        <div class="stats-bar  mt-4">
+            <span>จำนวนคำสั่งทั้งหมด: <span id="totalCount">@Model.Count()</span></span>
+            <span>แสดงผล: <span id="visibleCount">@Model.Count()</span></span>
+        </div>
+
+        <div class="commands-grid" id="commandsGrid">
+            @if (!Model.Any())
+            {
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.11-.7 3-1.4.89.7 1.91 1.19 3 1.4 5.16-1 9-5.45 9-11V7l-10-5z" />
+                    </svg>
+                    <h3>ยังไม่มีคำสั่งสำหรับบอทนี้</h3>
+                    <p>ลองเพิ่มคำสั่งใหม่หรือตรวจสอบชื่อบอท</p>
+                </div>
+            }
+            else
+            {
+                @foreach (var cmd in Model)
+                {
+                    <div class="command-card" data-command="@cmd.Command.ToLower()">
+                        <div class="command-header">
+                            <div class="command-name">
+                                @* แสดงไอคอนตามประเภทคำตอบ (สามารถปรับ CSS หรือเพิ่มไอคอนได้) *@
+                                @if (cmd.ResponseType == "text")
+                                {
+                                    <span class="type-icon text-icon"></span>
+                                }
+                                else if (cmd.ResponseType == "image")
+                                {
+                                    <span class="type-icon image-icon"></span>
+                                }
+                                else if (cmd.ResponseType == "carousel")
+                                {
+                                    <span class="type-icon carousel-icon"></span>
+                                }
+                                else
+                                {
+                                    <span class="type-icon card-icon"></span>
+                                }
+                                @cmd.Command
+                            </div>
+                            <div class="command-type type-@cmd.ResponseType.ToLower()">
+                                @cmd.ResponseType
+                            </div>
+                        </div>
+
+                        <div class="command-content">
+                            @if (cmd.ResponseType == "image" && !string.IsNullOrEmpty(cmd.ResponseText))
+                            {
+                                <img src="@cmd.ResponseText" alt="Command Image" class="command-image"
+                                     onerror="this.src='https://via.placeholder.com/300x200/cccccc/666666?text=Image+Not+Found'">
+                            }
+                            else if (cmd.ResponseType == "carousel" && !string.IsNullOrEmpty(cmd.ImagesJson))
+                            {
+                                var images = new List<string>();
+                                try
+                                {
+                                    images = Newtonsoft.Json.JsonConvert.DeserializeObject<List<string>>(cmd.ImagesJson);
+                                }
+                                catch { }
+
+                                <div class="carousel-container">
+                                    @foreach (var imgUrl in images)
+                                    {
+                                        <img src="@imgUrl" alt="Carousel Image" class="carousel-image"
+                                             onerror="this.src='https://via.placeholder.com/120x80/cccccc/666666?text=Error'">
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="command-text">@(cmd.ResponseText ?? "ไม่มีข้อความ")</div>
+                            }
+                        </div>
+
+                        <div class="action-buttons">
+                            <a href="@Url.Action("Edit", "BotCommand", new { id = cmd.Id })" class="edit-btn">
+                                ✏️ แก้ไข
+                            </a>
+                            <button type="button" class="delete-btn" onclick="confirmDelete('@cmd.Id', '@cmd.Command')">
+                                🗑️ ลบ
+                            </button>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    }
+    else
+    {
+        <p class="text-muted">กรุณาเลือกบอทเพื่อดูคำสั่ง</p>
+    }
+ 
+</div>
+
+<!-- Delete Form (Hidden) -->
+<form id="deleteForm" method="post" style="display: none;">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="_method" value="delete" />
+</form>
+
+<script>
+      function filterByBotLine() {
+        const select = document.getElementById('botLineSelect');
+        const token = select.value;
+
+        // ส่งค่า selectedBotLineToken ผ่าน QueryString
+        let url = new URL(window.location.href);
+        if (token) {
+            url.searchParams.set('selectedBotLineToken', token);
+        } else {
+            url.searchParams.delete('selectedBotLineToken');
+        }
+        window.location.href = url.toString();
+    }
+    function searchCommands(query) {
+        const searchTerm = query.toLowerCase();
+        const cards = document.querySelectorAll('.command-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const commandName = card.getAttribute('data-command');
+            const commandText = card.querySelector('.command-text')?.textContent.toLowerCase() || '';
+            const commandType = card.querySelector('.command-type').textContent.toLowerCase();
+
+            const isVisible = commandName.includes(searchTerm) ||
+                              commandText.includes(searchTerm) ||
+                              commandType.includes(searchTerm);
+
+            if (isVisible) {
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
+        });
+
+        document.getElementById('visibleCount').textContent = visibleCount;
+
+        // Show empty state if no results
+        const grid = document.getElementById('commandsGrid');
+        const existingEmptyState = grid.querySelector('.empty-search-state');
+
+        if (visibleCount === 0 && query.trim() !== '') {
+            if (!existingEmptyState) {
+                const emptyState = document.createElement('div');
+                emptyState.className = 'empty-state empty-search-state';
+                emptyState.innerHTML = `
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+                    </svg>
+                    <h3>ไม่พบคำสั่งที่ค้นหา</h3>
+                    <p>ลองใช้คำค้นหาอื่น หรือ <a href="javascript:void(0)" onclick="document.querySelector('.search-input').value=''; searchCommands('');">แสดงทั้งหมด</a></p>
+                `;
+                grid.appendChild(emptyState);
+            }
+        } else if (existingEmptyState) {
+            existingEmptyState.remove();
+        }
+    }
+
+    function confirmDelete(commandId, commandName) {
+        Swal.fire({
+            title: `❗ คุณต้องการลบคำสั่ง "${commandName}" หรือไม่?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'ใช่, ลบเลย',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = document.getElementById('deleteForm');
+                form.action = '@Url.Action("Delete", "BotCommand")/' + commandId;
+                form.submit();
+            }
+        });
+    }
+
+    // Animation on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const cards = document.querySelectorAll('.command-card');
+        cards.forEach((card, index) => {
+            card.style.animation = `fadeInUp 0.6s ease forwards ${index * 0.1}s`;
+            card.style.opacity = '0';
+        });
+    });
+
+    // Animation on scroll
+    window.addEventListener('scroll', function() {
+        const cards = document.querySelectorAll('.command-card');
+        cards.forEach((card, index) => {
+            const rect = card.getBoundingClientRect();
+            const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+            if (isVisible && card.style.opacity === '0') {
+                card.style.animation = `fadeInUp 0.6s ease forwards ${index * 0.1}s`;
+            }
+        });
+    });
+</script>

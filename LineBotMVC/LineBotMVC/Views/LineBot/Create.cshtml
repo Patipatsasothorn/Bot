@@ -1,0 +1,65 @@
+﻿@model LineBotMVC.Models.LineBot
+@{
+    ViewData["Title"] = "เพิ่ม LineBot";
+}
+
+<h2>➕ เพิ่ม LineBot</h2>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="form-group mb-3">
+        <label for="channelAccessToken">Channel Access Token</label>
+        <input type="text" class="form-control" id="channelAccessToken" name="ChannelAccessToken" required>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="channelSecret">Channel Secret</label>
+        <input type="text" class="form-control" id="channelSecret" name="ChannelSecret" required>
+    </div>
+
+    <div class="form-group mb-3">
+        <button type="button" class="btn btn-info" onclick="fetchDisplayName()">🔍 ค้นหา DisplayName</button>
+    </div>
+
+    <div class="form-group mb-3">
+        <label for="displayName">Display Name</label>
+        <input type="text" class="form-control" id="displayName" name="DisplayName" readonly required>
+    </div>
+
+    <button type="submit" class="btn btn-success">💾 บันทึก</button>
+    <a href="@Url.Action("Index", "BotCommand")" class="btn btn-secondary">ย้อนกลับ</a>
+</form>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+        function fetchDisplayName() {
+            const token = document.getElementById("channelAccessToken").value;
+            if (!token) {
+                Swal.fire("กรุณากรอก Token ก่อนค้นหา", "", "warning");
+                return;
+            }
+
+            fetch("@Url.Action("FetchDisplayName", "LineBot")", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `channelAccessToken=${encodeURIComponent(token)}`
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    document.getElementById("displayName").value = data.displayName;
+                    Swal.fire("ดึงข้อมูลสำเร็จ", `ชื่อบอท: ${data.displayName}`, "success");
+                } else {
+                    Swal.fire("ผิดพลาด", data.message, "error");
+                }
+            })
+            .catch(err => {
+                Swal.fire("เกิดข้อผิดพลาด", err.toString(), "error");
+            });
+        }
+    </script>
+}

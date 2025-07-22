@@ -1,0 +1,81 @@
+﻿@model BotCommand
+
+@{
+    ViewBag.Title = "แก้ไขคำสั่ง";
+}
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.12/dist/sweetalert2.min.css">
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<div class="container mt-4">
+    <h2>✏️ แก้ไขคำสั่ง</h2>
+
+    <form id="editForm" asp-action="Edit" method="post">
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Command">คำสั่ง</label>
+            <input asp-for="Command" class="form-control" />
+            <span asp-validation-for="Command" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ResponseType">ประเภทคำตอบ</label>
+            <select asp-for="ResponseType" class="form-control">
+                <option value="text">Text</option>
+                <option value="image">Image</option>
+                <option value="carousel">Carousel</option>
+                <option value="card">Card</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ResponseText">ข้อความตอบกลับ / URL</label>
+            <textarea asp-for="ResponseText" class="form-control" rows="3"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="ImagesJson">JSON สำหรับ Carousel หรือ Card (ไม่บังคับ)</label>
+            <textarea asp-for="ImagesJson" class="form-control" rows="6" placeholder='เช่น [{"title":"หัวข้อ","text":"ข้อความ","imageUrl":"https://...","linkUrl":"https://..."}]'></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-success">💾 บันทึก</button>
+        <a asp-action="Index" class="btn btn-secondary">🔙 กลับ</a>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(function () {
+            $('#editForm').on('submit', function (e) {
+                e.preventDefault(); // ยกเลิกการ submit ปกติ
+
+                const form = $(this);
+                const formData = form.serialize();
+
+                $.post(form.attr('action'), formData)
+                    .done(function () {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'บันทึกสำเร็จ',
+                            text: 'คำสั่งถูกอัปเดตเรียบร้อยแล้ว',
+                            confirmButtonText: 'ตกลง'
+                        }).then(() => {
+                            window.location.href = '@Url.Action("Index")';
+                        });
+                    })
+                    .fail(function (xhr) {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'เกิดข้อผิดพลาด',
+                            text: xhr.responseText || 'ไม่สามารถบันทึกได้',
+                        });
+                    });
+            });
+        });
+    </script>
+}

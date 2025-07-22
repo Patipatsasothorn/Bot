@@ -1,0 +1,492 @@
+﻿@model LineBotMVC.Models.BotCommand
+
+<div class="main-container">
+    <div class="page-header mt-5">
+        <h1><i class="fas fa-robot"></i> เพิ่มคำสั่งใหม่</h1>
+        <p>สร้างคำสั่งใหม่สำหรับบอทของคุณ</p>
+    </div>
+
+    <form id="botCommandForm" method="post">
+        <!-- ส่วนข้อมูลพื้นฐาน -->
+        <div class="form-section">
+            <div class="section-title">
+                <i class="fas fa-terminal"></i>
+                ข้อมูลพื้นฐาน
+            </div>
+            <div class="form-group">
+                <label for="BotLineToken" class="form-label">เลือกบอท</label>
+                <select name="BotLineToken" id="BotLineToken" class="form-select" required>
+                    <option value="">-- กรุณาเลือกบอท --</option>
+                    @foreach (var bot in ViewBag.BotLines)
+                    {
+                        <option value="@bot.BotLineToken">@bot.BotLineName</option>
+                    }
+                </select>
+            </div>
+            <input type="hidden" name="BotLineName" id="BotLineName" />
+
+            <div class="form-group">
+                <label class="form-label">คำสั่ง (Command)</label>
+                <input type="text" name="Command" class="form-control" placeholder="เช่น /hello, สวัสดี, หรือ hello" required>
+            </div>
+        </div>
+
+        <!-- ส่วนเลือกประเภทการตอบกลับ -->
+        <div class="form-section">
+            <div class="section-title">
+                <i class="fas fa-reply"></i>
+                ประเภทการตอบกลับ
+            </div>
+
+            <div class="response-type-cards d-flex gap-3 flex-wrap">
+                <div class="type-card card p-3 text-center cursor-pointer" data-type="text" style="width: 150px;">
+                    <i class="fas fa-comment fa-2x mb-2"></i>
+                    <h5>ข้อความ</h5>
+                    <p>ตอบกลับด้วยข้อความธรรมดา</p>
+                </div>
+                <div class="type-card card p-3 text-center cursor-pointer" data-type="image" style="width: 150px;">
+                    <i class="fas fa-image fa-2x mb-2"></i>
+                    <h5>รูปภาพ</h5>
+                    <p>ตอบกลับด้วยรูปภาพเดี่ยว</p>
+                </div>
+                <div class="type-card card p-3 text-center cursor-pointer" data-type="carousel" style="width: 150px;">
+                    <i class="fas fa-images fa-2x mb-2"></i>
+                    <h5>แกลเลอรี่</h5>
+                    <p>ตอบกลับด้วยรูปภาพหลายรูป</p>
+                </div>
+                <div class="type-card card p-3 text-center cursor-pointer" data-type="card" style="width: 150px;">
+                    <i class="fas fa-th-large fa-2x mb-2"></i>
+                    <h5>Card Message</h5>
+                    <p>ตอบกลับด้วย Flex Card Message แบบกำหนดเอง</p>
+                </div>
+            </div>
+
+            <input type="hidden" name="ResponseType" id="responseType" value="text">
+        </div>
+
+        <!-- ส่วนเนื้อหาการตอบกลับ -->
+        <div class="form-section" id="responseContentSection" class="mt-3">
+            <div class="section-title">
+                <i class="fas fa-edit"></i>
+                เนื้อหาการตอบกลับ
+            </div>
+
+            <div id="responseTextDiv">
+                <div class="form-group">
+                    <label class="form-label">ข้อความตอบกลับ</label>
+                    <textarea name="ResponseText" class="form-control" placeholder="กรอกข้อความที่ต้องการให้บอทตอบกลับ..." rows="4"></textarea>
+                </div>
+            </div>
+
+            <div id="imagesJsonDiv" style="display:none;">
+                <div class="form-group">
+                    <label class="form-label">รายการรูปภาพ (JSON Format)</label>
+                    <div class="alert alert-info-custom">
+                        <i class="fas fa-info-circle me-2"></i>
+                        รูปภาพจะถูกจัดเก็บในรูปแบบ JSON Array เช่น <code>["url1", "url2", "url3"]</code>
+                    </div>
+                    <textarea name="ImagesJson" class="json-preview form-control" placeholder='["https://example.com/image1.jpg", "https://example.com/image2.jpg"]' rows="6"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- ส่วนสร้าง Card Message แบบง่าย -->
+        <div class="form-section mt-3" id="cardBuilderSection" style="display:none;">
+            <div class="section-title">
+                <i class="fas fa-th-large"></i>
+                สร้าง Card Message แบบง่าย
+            </div>
+
+            <div class="card-message-builder">
+                <div class="form-group mb-2">
+                    <label>หัวข้อ (Title)</label>
+                    <input type="text" id="cardTitle" class="form-control" placeholder="เช่น สินค้าใหม่">
+                </div>
+                <div class="form-group mb-2">
+                    <label>รายละเอียด (Description)</label>
+                    <textarea id="cardDesc" class="form-control" rows="3" placeholder="รายละเอียดสินค้า"></textarea>
+                </div>
+                <div class="form-group mb-2">
+                    <label>URL รูปภาพ</label>
+                    <input type="text" id="cardImageUrl" class="form-control" placeholder="https://example.com/image.jpg">
+                </div>
+                <div class="form-group mb-2">
+                    <label>ชื่อปุ่ม (Button Label)</label>
+                    <input type="text" id="cardBtnLabel" class="form-control" placeholder="ดูรายละเอียด">
+                </div>
+                <div class="form-group mb-2">
+                    <label>URL ปุ่ม (Button URL)</label>
+                    <input type="text" id="cardBtnUrl" class="form-control" placeholder="https://example.com">
+                </div>
+
+                <button type="button" id="generateCardJson" class="btn btn-success mt-2">
+                    <i class="fas fa-cogs me-1"></i> สร้าง JSON Card Message
+                </button>
+            </div>
+        </div>
+
+        <!-- ส่วนอัปโหลดรูปภาพ -->
+        <div class="form-section mt-3">
+            <div class="section-title">
+                <i class="fas fa-cloud-upload-alt"></i>
+                อัปโหลดรูปภาพ
+            </div>
+
+            <div class="upload-zone border border-secondary rounded p-4 text-center cursor-pointer" onclick="document.getElementById('imageFile').click()">
+                <i class="fas fa-cloud-upload-alt fa-3x mb-3"></i>
+                <h4>คลิกเพื่อเลือกรูปภาพ</h4>
+                <p>หรือลากและวางไฟล์ที่นี่ (สูงสุด 10 รูป)</p>
+            </div>
+
+            <input type="file" id="imageFile" class="file-input" accept="image/*" multiple style="display:none;">
+            <button type="button" id="uploadBtn" class="btn btn-upload mt-2">
+                <i class="fas fa-upload me-2"></i>เริ่มอัปโหลด
+            </button>
+
+            <div id="uploadProgress" class="mt-3" style="display:none;">
+                <div class="progress">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                </div>
+                <p class="mt-2 text-center">กำลังอัปโหลด... <span id="progressText">0%</span></p>
+            </div>
+
+            <div id="uploadedImages" class="uploaded-images d-flex flex-wrap gap-3 mt-3">
+                <!-- รูปที่อัปโหลดจะแสดงที่นี่ -->
+            </div>
+        </div>
+
+        <!-- ปุ่มบันทึก -->
+        <div class="form-actions mt-4">
+            <button type="submit" class="btn btn-primary-custom">
+                <i class="fas fa-save me-2"></i>บันทึกคำสั่ง
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+    .type-card.active {
+        border: 2px solid #0d6efd;
+        background-color: #e7f1ff;
+    }
+
+    .type-card {
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+    }
+
+        .type-card:hover {
+            background-color: #f0f8ff;
+        }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    .uploaded-images .image-card {
+        width: 120px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        padding: 5px;
+        text-align: center;
+    }
+
+        .uploaded-images .image-card img {
+            max-width: 100%;
+            max-height: 80px;
+            border-radius: 4px;
+        }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+<script>
+    $(document).ready(function() {
+            $(document).ready(function () {
+        $('#BotLineToken').change(function () {
+            var selectedName = $(this).find('option:selected').text();
+            $('#BotLineName').val(selectedName);
+        });
+
+        // กรณีถ้ามีค่า default อยู่แล้ว (เช่น edit form) ให้ตั้งค่าเริ่มต้น
+        $('#BotLineToken').trigger('change');
+    });
+        // การเลือกประเภทการตอบกลับ
+        $('.type-card').click(function() {
+            $('.type-card').removeClass('active');
+            $(this).addClass('active');
+
+            const type = $(this).data('type');
+            $('#responseType').val(type);
+
+            if (type === 'carousel') {
+                $('#imagesJsonDiv').show();
+                $('#responseTextDiv').hide();
+                $('#cardBuilderSection').hide();
+            } else if (type === 'image') {
+                $('#responseTextDiv').show();
+                $('#imagesJsonDiv').hide();
+                $('#cardBuilderSection').hide();
+            } else if (type === 'card') {
+                // แสดงฟอร์มสร้าง Card
+                $('#cardBuilderSection').show();
+                $('#imagesJsonDiv').show();
+                $('#responseTextDiv').hide();
+            } else {
+                $('#responseTextDiv').show();
+                $('#imagesJsonDiv').hide();
+                $('#cardBuilderSection').hide();
+            }
+        });
+
+        // เริ่มต้นด้วย text
+        $('.type-card[data-type="text"]').click();
+
+        // ปุ่มสร้าง JSON Card Message จากข้อมูลฟอร์ม
+        $('#generateCardJson').click(function() {
+            const title = $('#cardTitle').val().trim();
+            const desc = $('#cardDesc').val().trim();
+            const imageUrl = $('#cardImageUrl').val().trim();
+            const btnLabel = $('#cardBtnLabel').val().trim();
+            const btnUrl = $('#cardBtnUrl').val().trim();
+
+            if (!title || !desc || !imageUrl || !btnLabel || !btnUrl) {
+                alert('กรุณากรอกข้อมูลทุกช่องในส่วน Card Message');
+                return;
+            }
+
+            // สร้าง JSON Card Message ตัวอย่าง (Flex message bubble แบบง่าย)
+            const cardJson = {
+                "type": "bubble",
+                "hero": {
+                    "type": "image",
+                    "url": imageUrl,
+                    "size": "full",
+                    "aspectRatio": "20:13",
+                    "aspectMode": "cover"
+                },
+                "body": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "contents": [
+                        {
+                            "type": "text",
+                            "text": title,
+                            "weight": "bold",
+                            "size": "xl"
+                        },
+                        {
+                            "type": "text",
+                            "text": desc,
+                            "wrap": true,
+                            "margin": "md",
+                            "size": "sm",
+                            "color": "#666666"
+                        }
+                    ]
+                },
+                "footer": {
+                    "type": "box",
+                    "layout": "vertical",
+                    "spacing": "sm",
+                    "contents": [
+                        {
+                            "type": "button",
+                            "style": "link",
+                            "height": "sm",
+                            "action": {
+                                "type": "uri",
+                                "label": btnLabel,
+                                "uri": btnUrl
+                            }
+                        }
+                    ],
+                    "flex": 0
+                }
+            };
+
+            // แปลงเป็น JSON string แบบสวยงาม
+            const jsonString = JSON.stringify(cardJson, null, 2);
+
+            // เอาไปใส่ textarea สำหรับส่งจริง
+            $('textarea[name="ImagesJson"]').val(`[${jsonString}]`);
+
+            alert('สร้าง JSON Card Message เรียบร้อย! คุณสามารถแก้ไข JSON เพิ่มเติมได้ที่กล่องด้านบน');
+        });
+
+        // Drag and Drop สำหรับอัปโหลดรูปภาพ (ถ้ามี)
+        const uploadZone = $('.upload-zone');
+
+        uploadZone.on('dragover', function(e) {
+            e.preventDefault();
+            $(this).addClass('dragover');
+        });
+
+        uploadZone.on('dragleave', function(e) {
+            e.preventDefault();
+            $(this).removeClass('dragover');
+        });
+
+        uploadZone.on('drop', function(e) {
+            e.preventDefault();
+            $(this).removeClass('dragover');
+
+            const files = e.originalEvent.dataTransfer.files;
+            $('#imageFile')[0].files = files;
+            updateFileInfo(files);
+        });
+
+        // เมื่อเลือกไฟล์
+        $('#imageFile').change(function() {
+            const files = this.files;
+            updateFileInfo(files);
+        });
+
+        function updateFileInfo(files) {
+            if (files.length > 0) {
+                $('.upload-zone h4').text(`เลือกแล้ว ${files.length} ไฟล์`);
+                $('.upload-zone p').text('คลิกปุ่มอัปโหลดเพื่อเริ่มต้น');
+            }
+        }
+
+        // อัปโหลดรูปภาพ (ตัวอย่าง AJAX call - ต้องเขียน API จริง)
+        $('#uploadBtn').click(function() {
+            const files = $('#imageFile')[0].files;
+
+            if (files.length === 0) {
+                alert('กรุณาเลือกไฟล์รูปภาพอย่างน้อย 1 รูป');
+                return;
+            }
+
+            if (files.length > 10) {
+                alert('คุณสามารถอัปโหลดได้สูงสุด 10 รูปเท่านั้น');
+                return;
+            }
+
+            $('#uploadProgress').show();
+            let uploadedCount = 0;
+            const totalFiles = files.length;
+
+            for (let i = 0; i < files.length; i++) {
+                const formData = new FormData();
+                formData.append('imageFile', files[i]);
+
+                $.ajax({
+                    url: '/BotCommand/UploadImage', // เปลี่ยนตาม URL จริงของคุณ
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(res) {
+                        uploadedCount++;
+                        updateProgress(uploadedCount, totalFiles);
+
+                        if (res.success) {
+                            addImageCard(res.url, files[i].name);
+                        } else {
+                            alert(res.message);
+                        }
+
+                        if (uploadedCount === totalFiles) {
+                            setTimeout(() => {
+                                $('#uploadProgress').hide();
+                            }, 1000);
+                        }
+                    },
+                    error: function() {
+                        uploadedCount++;
+                        updateProgress(uploadedCount, totalFiles);
+                        alert('เกิดข้อผิดพลาดในการอัปโหลดไฟล์: ' + files[i].name);
+                    }
+                });
+            }
+        });
+
+        function updateProgress(current, total) {
+            const percent = Math.round((current / total) * 100);
+            $('.progress-bar').css('width', percent + '%');
+            $('#progressText').text(percent + '%');
+        }
+
+        function addImageCard(imageUrl, fileName) {
+            const imageCard = `
+                <div class="image-card">
+                    <img src="${imageUrl}" alt="${fileName}" loading="lazy">
+                    <div class="image-card-body mt-2">
+                        <small class="text-muted d-block mb-2">${fileName}</small>
+                        <button type="button" class="btn btn-sm btn-success addToJsonBtn">
+                            <i class="fas fa-plus me-1"></i>เพิ่มรูปนี้
+                        </button>
+                    </div>
+                </div>
+            `;
+            $('#uploadedImages').append(imageCard);
+        }
+
+        // เพิ่ม URL รูปภาพลง JSON
+        $('#uploadedImages').on('click', '.addToJsonBtn', function() {
+            const imgUrl = $(this).closest('.image-card').find('img').attr('src');
+            const textarea = $('textarea[name="ImagesJson"]');
+            const currentJson = textarea.val().trim();
+
+            let arr = [];
+            if (currentJson) {
+                try {
+                    arr = JSON.parse(currentJson);
+                    if (!Array.isArray(arr)) arr = [];
+                } catch {
+                    arr = [];
+                }
+            }
+
+            if (!arr.includes(imgUrl)) {
+                arr.push(imgUrl);
+                textarea.val(JSON.stringify(arr, null, 2));
+
+                // เปลี่ยนสีปุ่มเป็นสีเขียวชั่วคราว
+                const btn = $(this);
+                btn.html('<i class="fas fa-check me-1"></i>เพิ่มแล้ว');
+                btn.removeClass('btn-success').addClass('btn-secondary');
+
+                setTimeout(() => {
+                    btn.html('<i class="fas fa-plus me-1"></i>เพิ่มรูปนี้');
+                    btn.removeClass('btn-secondary').addClass('btn-success');
+                }, 2000);
+            }
+        });
+
+        // Form validation ก่อน submit
+        $('#botCommandForm').on('submit', function(e) {
+            const command = $('input[name="Command"]').val().trim();
+            const responseType = $('#responseType').val();
+            const responseText = $('textarea[name="ResponseText"]').val().trim();
+            const imagesJson = $('textarea[name="ImagesJson"]').val().trim();
+
+            if (!command) {
+                alert('กรุณากรอกคำสั่ง');
+                e.preventDefault();
+                return;
+            }
+
+            if (responseType === 'text' && !responseText) {
+                alert('กรุณากรอกข้อความตอบกลับ');
+                e.preventDefault();
+                return;
+            }
+
+            if ((responseType === 'image' || responseType === 'carousel' || responseType === 'card') && !imagesJson) {
+                alert('กรุณาเพิ่มรูปภาพหรือ JSON สำหรับการตอบกลับ');
+                e.preventDefault();
+                return;
+            }
+
+            // เปลี่ยนปุ่มเป็น loading
+            const submitBtn = $(this).find('button[type="submit"]');
+            submitBtn.html('<i class="fas fa-spinner fa-spin me-2"></i>กำลังบันทึก...');
+            submitBtn.prop('disabled', true);
+        });
+    });
+</script>

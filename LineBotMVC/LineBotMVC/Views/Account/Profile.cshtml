@@ -1,0 +1,119 @@
+﻿@model LineBotMVC.Models.User
+@{
+    ViewData["Title"] = "ข้อมูลส่วนตัว";
+}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+
+</style>
+
+<div class="container-fluid">
+    <div class="profile-container">
+        <!-- Header Section -->
+        <div class="profile-header">
+            <div class="profile-avatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <h2>ข้อมูลส่วนตัว</h2>
+            <p class="mb-0">จัดการข้อมูลส่วนตัวของคุณ</p>
+        </div>
+
+        <!-- Content Section -->
+        <div class="profile-content">
+            <!-- Alert Messages -->
+            @if (ViewBag.Error != null)
+            {
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle me-2"></i>
+                    @ViewBag.Error
+                </div>
+            }
+            @if (ViewBag.Success != null)
+            {
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle me-2"></i>
+                    @ViewBag.Success
+                </div>
+            }
+
+            <!-- Profile Form -->
+            <form method="post" asp-action="UpdateProfile">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="id" value="@Model.Id" />
+
+                <!-- Basic Information Section -->
+                <div class="form-section">
+                    <h4><i class="fas fa-user-circle me-2"></i>ข้อมูลพื้นฐาน</h4>
+
+                    <div class="mb-3">
+                        <label for="DisplayName" class="form-label">
+                            <i class="fas fa-id-card input-icon"></i>
+                            ชื่อแสดงผล
+                        </label>
+                        <input type="text" class="form-control" id="DisplayName" value="@Model.DisplayName" disabled />
+                        <small class="form-text text-muted">ชื่อนี้จะแสดงในระบบ (ไม่สามารถแก้ไขได้)</small>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="Email" class="form-label">
+                            <i class="fas fa-envelope input-icon"></i>
+                            อีเมล
+                        </label>
+                        <input type="email" class="form-control" id="Email" name="email" value="@Model.Email" required />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="PhoneNumber" class="form-label">
+                            <i class="fas fa-phone input-icon"></i>
+                            เบอร์โทรศัพท์
+                        </label>
+                        <input type="tel" class="form-control" id="PhoneNumber" name="phoneNumber" value="@Model.PhoneNumber" />
+                    </div>
+                </div>
+
+                <!-- Password Section -->
+                <div class="password-section">
+                    <h4><i class="fas fa-lock me-2"></i>เปลี่ยนรหัสผ่าน (ถ้าต้องการ)</h4>
+
+                    <div class="mb-3">
+                        <label for="Password" class="form-label">
+                            <i class="fas fa-key input-icon"></i>
+                            รหัสผ่านใหม่
+                        </label>
+                        <input type="password" class="form-control" id="Password" name="password" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="ConfirmPassword" class="form-label">
+                            <i class="fas fa-check-double input-icon"></i>
+                            ยืนยันรหัสผ่านใหม่
+                        </label>
+                        <input type="password" class="form-control" id="ConfirmPassword" name="confirmPassword" />
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="text-center mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save me-2"></i>
+                        บันทึกข้อมูล
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Add floating animation to form controls
+    document.querySelectorAll('.form-control').forEach(input => {
+        input.addEventListener('focus', function() {
+            this.parentElement.style.transform = 'translateY(-2px)';
+        });
+
+        input.addEventListener('blur', function() {
+            this.parentElement.style.transform = 'translateY(0)';
+        });
+    });
+</script>

@@ -1,0 +1,306 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>สมัครสมาชิก</title>
+    <link rel="stylesheet" href="~/css/Rigister.css" asp-append-version="true" />
+
+    <style>
+        /* ถ้าต้องการเพิ่ม CSS สำหรับฟิลด์เบอร์โทร กำหนดตรงนี้ */
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <div class="register-header">
+            <h1>สมัครสมาชิก</h1>
+            <p>สร้างบัญชีใหม่เพื่อเริ่มต้นใช้งาน</p>
+        </div>
+
+        <!-- สำหรับแสดงข้อความผิดพลาด -->
+        <div id="errorMessage" class="error-message"></div>
+        <div id="successMessage" class="success-message"></div>
+
+        <!-- Form สำหรับ C# MVC -->
+        <form id="registerForm" method="post" action="/Account/Register">
+            @Html.AntiForgeryToken()
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="firstName">ชื่อ</label>
+                    <input type="text" id="firstName" name="FirstName" placeholder="กรุณากรอกชื่อ" />
+                    <div class="field-error" id="firstNameError"></div>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">นามสกุล</label>
+                    <input type="text" id="lastName" name="LastName" placeholder="กรุณากรอกนามสกุล" />
+                    <div class="field-error" id="lastNameError"></div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="username">ชื่อผู้ใช้ <span class="required">*</span></label>
+                <input type="text" id="username" name="Username" placeholder="กรุณากรอกชื่อผู้ใช้" required />
+                <div class="field-error" id="usernameError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">อีเมล <span class="required">*</span></label>
+                <input type="email" id="email" name="Email" placeholder="กรุณากรอกอีเมล" required />
+                <div class="field-error" id="emailError"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="phoneNumber">เบอร์โทรศัพท์</label>
+                <input type="tel" id="phoneNumber" name="PhoneNumber" placeholder="กรุณากรอกเบอร์โทรศัพท์" />
+                <div class="field-error" id="phoneError"></div>
+            </div>
+
+            <div class="form-group password-group">
+                <label for="password">รหัสผ่าน <span class="required">*</span></label>
+                <input type="password" id="password" name="Password" placeholder="กรุณากรอกรหัสผ่าน" required />
+                <span class="password-toggle" onclick="togglePassword('password')">👁️</span>
+                <div class="password-strength">
+                    <div class="password-strength-fill" id="passwordStrengthFill"></div>
+                </div>
+                <div class="password-requirements">
+                    <div class="requirement invalid" id="lengthReq">อย่างน้อย 8 ตัวอักษร</div>
+                    <div class="requirement invalid" id="uppercaseReq">มีตัวอักษรพิมพ์ใหญ่</div>
+                    <div class="requirement invalid" id="lowercaseReq">มีตัวอักษรพิมพ์เล็ก</div>
+                    <div class="requirement invalid" id="numberReq">มีตัวเลข</div>
+                    <div class="requirement invalid" id="specialReq">มีอักขระพิเศษ (!#$%^&*)</div>
+                </div>
+                <div class="field-error" id="passwordError"></div>
+            </div>
+
+            <div class="form-group password-group">
+                <label for="confirmPassword">ยืนยันรหัสผ่าน <span class="required">*</span></label>
+                <input type="password" id="confirmPassword" name="ConfirmPassword" placeholder="กรุณายืนยันรหัสผ่าน" required />
+                <span class="password-toggle" onclick="togglePassword('confirmPassword')">👁️</span>
+                <div class="field-error" id="confirmPasswordError"></div>
+            </div>
+
+            <div class="terms-group">
+                <input type="checkbox" id="acceptTerms" name="AcceptTerms" required />
+                <div class="terms-text">
+                    ฉันยอมรับ <a href="/Terms" target="_blank">เงื่อนไขการใช้งาน</a> และ 
+                    <a href="/Privacy" target="_blank">นโยบายความเป็นส่วนตัว</a>
+                </div>
+            </div>
+
+            <button type="submit" class="register-btn" id="registerButton" disabled>
+                สมัครสมาชิก
+            </button>
+        </form>
+
+        <div class="divider">
+            <span>หรือ</span>
+        </div>
+
+        <div class="login-link">
+            มีบัญชีอยู่แล้ว? <a href="/Account/Login">เข้าสู่ระบบ</a>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(fieldId) {
+            const passwordInput = document.getElementById(fieldId);
+            const toggleIcon = passwordInput.nextElementSibling;
+            
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleIcon.textContent = '🙈';
+            } else {
+                passwordInput.type = 'password';
+                toggleIcon.textContent = '👁️';
+            }
+        }
+
+        function checkPasswordStrength(password) {
+            let strength = 0;
+            const requirements = {
+                length: password.length >= 8,
+                uppercase: /[A-Z]/.test(password),
+                lowercase: /[a-z]/.test(password),
+                number: /\d/.test(password),
+                special: /[!#$%^&*(),.?":{}|<>]/.test(password)
+            };
+
+            document.getElementById('lengthReq').className = `requirement ${requirements.length ? 'valid' : 'invalid'}`;
+            document.getElementById('uppercaseReq').className = `requirement ${requirements.uppercase ? 'valid' : 'invalid'}`;
+            document.getElementById('lowercaseReq').className = `requirement ${requirements.lowercase ? 'valid' : 'invalid'}`;
+            document.getElementById('numberReq').className = `requirement ${requirements.number ? 'valid' : 'invalid'}`;
+            document.getElementById('specialReq').className = `requirement ${requirements.special ? 'valid' : 'invalid'}`;
+
+            Object.values(requirements).forEach(req => {
+                if (req) strength++;
+            });
+
+            const strengthFill = document.getElementById('passwordStrengthFill');
+            const strengthClasses = ['', 'strength-weak', 'strength-fair', 'strength-good', 'strength-strong'];
+            
+            strengthFill.className = 'password-strength-fill';
+            if (strength > 0) {
+                strengthFill.classList.add(strengthClasses[Math.min(strength, 4)]);
+            }
+
+            return strength >= 4;
+        }
+
+        function validateForm() {
+            let isValid = true;
+            const formData = new FormData(document.getElementById('registerForm'));
+            
+            // Clear previous errors
+            document.querySelectorAll('.field-error').forEach(error => {
+                error.style.display = 'none';
+            });
+            document.getElementById('errorMessage').style.display = 'none';
+
+            // Username validation
+            const username = formData.get('Username');
+            if (!username || username.length < 3) {
+                showFieldError('usernameError', 'ชื่อผู้ใช้ต้องมีอย่างน้อย 3 ตัวอักษร');
+                isValid = false;
+            }
+
+            // Email validation
+            const email = formData.get('Email');
+            const emailRegex = /^[^\s]+[^\s]+\.[^\s]+/;
+            if (!email || !emailRegex.test(email)) {
+                showFieldError('emailError', 'รูปแบบอีเมลไม่ถูกต้อง');
+                isValid = false;
+            }
+
+            // Phone validation (ถ้ามีกรอก)
+            const phone = formData.get('PhoneNumber');
+            if (phone && !/^[0-9-+\s()]{10,}$/.test(phone)) {
+                showFieldError('phoneError', 'รูปแบบเบอร์โทรศัพท์ไม่ถูกต้อง');
+                isValid = false;
+            }
+
+            // Password validation
+            const password = formData.get('Password');
+            if (!checkPasswordStrength(password)) {
+                showFieldError('passwordError', 'รหัสผ่านไม่เข้าเงื่อนไข');
+                isValid = false;
+            }
+
+            // Confirm password validation
+            const confirmPassword = formData.get('ConfirmPassword');
+            if (password !== confirmPassword) {
+                showFieldError('confirmPasswordError', 'รหัสผ่านไม่ตรงกัน');
+                isValid = false;
+            }
+
+            // Terms validation
+            if (!formData.get('AcceptTerms')) {
+                showError('กรุณายอมรับเงื่อนไขการใช้งาน');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        function showFieldError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        function showError(message) {
+            const errorDiv = document.getElementById('errorMessage');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('successMessage');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+        }
+
+        document.getElementById('password').addEventListener('input', function() {
+            checkPasswordStrength(this.value);
+            updateSubmitButton();
+        });
+
+        document.getElementById('confirmPassword').addEventListener('input', function() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = this.value;
+            
+            if (confirmPassword && password !== confirmPassword) {
+                showFieldError('confirmPasswordError', 'รหัสผ่านไม่ตรงกัน');
+            } else {
+                document.getElementById('confirmPasswordError').style.display = 'none';
+            }
+            updateSubmitButton();
+        });
+
+        document.getElementById('acceptTerms').addEventListener('change', updateSubmitButton);
+
+        // เพิ่ม listener สำหรับเบอร์โทร (blur) ตรวจสอบรูปแบบ
+        document.getElementById('phoneNumber').addEventListener('blur', function () {
+            const phone = this.value;
+            if (phone && !/^[0-9-+\s()]{10,}$/.test(phone)) {
+                showFieldError('phoneError', 'รูปแบบเบอร์โทรศัพท์ไม่ถูกต้อง');
+            } else {
+                document.getElementById('phoneError').style.display = 'none';
+            }
+        });
+
+        function updateSubmitButton() {
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const acceptTerms = document.getElementById('acceptTerms').checked;
+            const submitButton = document.getElementById('registerButton');
+            
+            const isPasswordStrong = checkPasswordStrength(password);
+            const passwordsMatch = password === confirmPassword && confirmPassword !== '';
+            
+            submitButton.disabled = !(isPasswordStrong && passwordsMatch && acceptTerms);
+        }
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            const errorDiv = document.getElementById('errorMessage');
+            const successDiv = document.getElementById('successMessage');
+            
+            errorDiv.style.display = 'none';
+            successDiv.style.display = 'none';
+            
+            if (!validateForm()) {
+                e.preventDefault();
+                return;
+            }
+            
+            const registerButton = document.getElementById('registerButton');
+            registerButton.textContent = 'กำลังสมัครสมาชิก...';
+            registerButton.disabled = true;
+        });
+
+        // Real-time validation for username and email
+        document.querySelectorAll('input').forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.id === 'username' && this.value) {
+                    if (this.value.length < 3) {
+                        showFieldError('usernameError', 'ชื่อผู้ใช้ต้องมีอย่างน้อย 3 ตัวอักษร');
+                    } else {
+                        document.getElementById('usernameError').style.display = 'none';
+                    }
+                }
+                
+                if (this.id === 'email' && this.value) {
+                    const emailRegex = /^[^\s]+[^\s]+\.[^\s]+/;
+                    if (!emailRegex.test(this.value)) {
+                        showFieldError('emailError', 'รูปแบบอีเมลไม่ถูกต้อง');
+                    } else {
+                        document.getElementById('emailError').style.display = 'none';
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
