@@ -61,7 +61,7 @@
                     <div class="command-card" data-command="@cmd.Command.ToLower()">
                         <div class="command-header">
                             <div class="command-name">
-                                @* แสดงไอคอนตามประเภทคำตอบ (สามารถปรับ CSS หรือเพิ่มไอคอนได้) *@
+                                @* แสดงไอคอนตามประเภทคำตอบ *@
                                 @if (cmd.ResponseType == "text")
                                 {
                                     <span class="type-icon text-icon"></span>
@@ -114,6 +114,18 @@
                             }
                         </div>
 
+                        <div class="command-time-range mt-2 text-muted" style="font-size: 0.9em;">
+                            <strong>ช่วงเวลา:</strong>
+                            @if (!string.IsNullOrEmpty(cmd.TimePeriod))
+                            {
+                                @cmd.TimePeriod
+                            }
+                            else
+                            {
+                                <em>ยังไม่ได้กำหนดช่วงเวลา</em>
+                            }
+                        </div>
+
                         <div class="action-buttons">
                             <a href="@Url.Action("Edit", "BotCommand", new { id = cmd.Id })" class="edit-btn">
                                 ✏️ แก้ไข
@@ -124,6 +136,7 @@
                         </div>
                     </div>
                 }
+
             }
         </div>
     }

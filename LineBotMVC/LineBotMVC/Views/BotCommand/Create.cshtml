@@ -30,6 +30,16 @@
                 <input type="text" name="Command" class="form-control" placeholder="เช่น /hello, สวัสดี, หรือ hello" required>
             </div>
         </div>
+        <div class="form-section">
+            <label for="TimeRange" class="form-label">⏰ ช่วงเวลา</label>
+            <select class="form-control" name="TimePeriod">
+                <option value="">-- เลือกช่วงเวลา --</option>
+                <option value="morning">เช้า (05:00 - 11:59)</option>
+                <option value="afternoon">บ่าย (12:00 - 17:59)</option>
+                <option value="evening">เย็น (18:00 - 21:59)</option>
+                <option value="night">กลางคืน (22:00 - 04:59)</option>
+            </select>
+        </div>
 
         <!-- ส่วนเลือกประเภทการตอบกลับ -->
         <div class="form-section">

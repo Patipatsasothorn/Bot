@@ -21,15 +21,12 @@ namespace LineBotMVC.Controllers
         [Route("line/webhook")]
         public async Task<IActionResult> LineWebhook()
         {
-            // อ่าน header X-Line-Signature
             var xLineSignature = Request.Headers["X-Line-Signature"].FirstOrDefault();
             using var reader = new StreamReader(Request.Body);
             var body = await reader.ReadToEndAsync();
 
-            // ดึงข้อมูลบอททั้งหมดจาก DB
             var lineBots = await _context.LineBots.ToListAsync();
 
-            // หา bot ที่ตรงกับ signature
             LineBot matchedBot = null;
             foreach (var bot in lineBots)
             {
@@ -75,9 +72,12 @@ namespace LineBotMVC.Controllers
                                 break;
 
                             default:
-                                var cmd = await _context.BotCommands
-                                    .FirstOrDefaultAsync(c => c.BotLineName == matchedBot.DisplayName && c.Command.ToLower() == userMessage);
+                                string timeRange = GetCurrentTimeRange();
 
+                                var cmd = await _context.BotCommands
+                                    .Where(c => c.BotLineName == matchedBot.DisplayName && c.Command.ToLower() == userMessage)
+                                    .OrderByDescending(c => c.TimePeriod == timeRange) // ถ้ามี TimeRange ตรงจะมาก่อน
+                                    .FirstOrDefaultAsync();
 
                                 if (cmd != null)
                                 {
@@ -88,7 +88,6 @@ namespace LineBotMVC.Controllers
                                     else if (cmd.ResponseType == "carousel")
                                     {
                                         var images = JsonConvert.DeserializeObject<List<string>>(cmd.ImagesJson);
-
                                         var bubbles = images.Select(url => new
                                         {
                                             type = "bubble",
@@ -105,14 +104,11 @@ namespace LineBotMVC.Controllers
                                         var replyCarousel = new
                                         {
                                             replyToken = replyToken,
-                                            messages = new[]
-                                            {
-                                                new
-                                                {
+                                            messages = new[] {
+                                                new {
                                                     type = "flex",
                                                     altText = "ภาพเลื่อน",
-                                                    contents = new
-                                                    {
+                                                    contents = new {
                                                         type = "carousel",
                                                         contents = bubbles
                                                     }
@@ -125,17 +121,12 @@ namespace LineBotMVC.Controllers
                                     else if (cmd.ResponseType == "card")
                                     {
                                         var json = cmd.ImagesJson.Trim();
-
                                         object contents;
 
                                         if (json.StartsWith("["))
                                         {
                                             var cardBubbles = JsonConvert.DeserializeObject<List<object>>(json);
-                                            contents = new
-                                            {
-                                                type = "carousel",
-                                                contents = cardBubbles
-                                            };
+                                            contents = new { type = "carousel", contents = cardBubbles };
                                         }
                                         else
                                         {
@@ -146,10 +137,8 @@ namespace LineBotMVC.Controllers
                                         var replyCard = new
                                         {
                                             replyToken = replyToken,
-                                            messages = new[]
-                                            {
-                                                new
-                                                {
+                                            messages = new[] {
+                                                new {
                                                     type = "flex",
                                                     altText = "Card Message",
                                                     contents = contents
@@ -183,6 +172,19 @@ namespace LineBotMVC.Controllers
             }
 
             return Ok();
+        }
+        private string GetCurrentTimeRange()
+        {
+            var now = DateTime.Now.TimeOfDay;
+
+            if (now >= new TimeSpan(6, 0, 0) && now < new TimeSpan(12, 0, 0))
+                return "morning";
+            else if (now >= new TimeSpan(12, 0, 0) && now < new TimeSpan(18, 0, 0))
+                return "afternoon";
+            else if (now >= new TimeSpan(18, 0, 0) && now <= new TimeSpan(23, 59, 59))
+                return "evening";
+            else
+                return "night";
         }
 
         // ฟังก์ชันตรวจสอบ signature

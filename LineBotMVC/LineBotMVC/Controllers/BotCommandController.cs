@@ -96,6 +96,7 @@ namespace LineBotMVC.Controllers
             return RedirectToAction("Index");
         }
 
+
         // POST: BotCommand/UploadImage
         [HttpPost]
         public async Task<IActionResult> UploadImage(IFormFile imageFile)
@@ -146,6 +147,30 @@ namespace LineBotMVC.Controllers
             }
 
             return View(command);
+        }
+        // GET: BotCommand/CreateTelegramC
+        [HttpGet]
+        public async Task<IActionResult> CreateTelegramC()
+        {
+            var currentUser = HttpContext.Session.GetString("UserName");
+            if (string.IsNullOrEmpty(currentUser))
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            //// ดึงข้อมูล TelegramBots (คุณอาจจะใช้ตารางแยกต่างหากจาก LineBots)
+            //var telegramBots = await _context.TelegramBots
+            //    .Where(t => t.UserName == currentUser)
+            //    .Select(t => new
+            //    {
+            //        BotName = t.DisplayName,
+            //        BotToken = t.BotToken
+            //    })
+            //    .ToListAsync();
+
+            //ViewBag.TelegramBots = telegramBots;
+
+            return View("CreateTelegramC"); // เรียก View ที่อยู่ใน Views/BotCommand/CreateTelegramC.cshtml
         }
 
         // POST: BotCommand/Delete/5

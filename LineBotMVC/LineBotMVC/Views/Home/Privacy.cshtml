@@ -1,114 +1,209 @@
-﻿@{
+﻿@model IEnumerable<BotCommand>
+@{
     ViewData["Title"] = "สร้างคำสั่ง Telegram";
 }
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-<style>
-
-</style>
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <div class="container-fluid">
-    <div class="main-container">
-        <!-- Floating Background Elements -->
-        <div class="floating-elements">
-            <div class="floating-element">
-                <i class="fas fa-robot" style="font-size: 3rem; color: #667eea;"></i>
-            </div>
-            <div class="floating-element">
-                <i class="fab fa-telegram-plane" style="font-size: 2.5rem; color: #764ba2;"></i>
-            </div>
-            <div class="floating-element">
-                <i class="fas fa-cog" style="font-size: 2rem; color: #667eea;"></i>
-            </div>
-        </div>
+    <div class="header mt-4">
+        <h1>📨 คำสั่ง Telegram</h1>
+        <p>จัดการคำสั่งตอบกลับจาก Telegram Bot</p>
+        <a href="@Url.Action("CreateTelegramC", "BotCommand")" class="add-btn">
+            ➕ เพิ่มคำสั่ง Telegram
+        </a>
+        <a href="@Url.Action("CreateTelegramC", "BotCommand")" class="add-btn">
+            ➕ เพิ่ม TelegramBot
+        </a>
 
-        <!-- Notification Bell -->
-        <div class="notification-bell">
-            <i class="fas fa-bell"></i>
-        </div>
-
-        <!-- Header Section -->
-        <div class="header-section">
-            <div class="telegram-icon">
-                <i class="fab fa-telegram-plane"></i>
-            </div>
-            <h1>สร้างคำสั่ง Telegram</h1>
-            <div class="header-subtitle">สร้างและจัดการบอทคำสั่งสำหรับ Telegram อย่างง่ายดาย</div>
-        </div>
-
-        <!-- Content Section -->
-        <div class="content-section">
-            <div class="coming-soon-card">
-                <div class="coming-soon-content">
-                    <div class="construction-icon">
-                        <i class="fas fa-tools"></i>
-                    </div>
-                    <div class="coming-soon-title">กำลังพัฒนา</div>
-                    <div class="coming-soon-subtitle">ระบบสร้างคำสั่ง Telegram อยู่ในขั้นตอนการพัฒนา</div>
-
-                    <!-- Progress Section -->
-                    <div class="progress-section">
-                        <div class="progress-title">
-                            <i class="fas fa-chart-line"></i>
-                            ความคืบหน้าการพัฒนา
-                        </div>
-                        <div class="progress-bar-container">
-                            <div class="progress-bar"></div>
-                        </div>
-                        <div class="progress-text">30% เสร็จสิ้น - กำลังออกแบบ UI/UX</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Feature Preview -->
-            <div class="feature-preview">
-                <div class="feature-item">
-                    <div class="feature-icon">
-                        <i class="fas fa-plus-circle"></i>
-                    </div>
-                    <div class="feature-title">สร้างคำสั่งใหม่</div>
-                    <div class="feature-description">
-                        สร้างคำสั่งบอท Telegram ที่ตอบสนองความต้องการของคุณได้อย่างง่ายดาย
-                    </div>
-                </div>
-
+        <div class="form-group mt-4 mb-3">
+            <label for="botTelegramSelect">เลือกบอท Telegram:</label>
+            <div style="text-align: center; margin-bottom: 1rem;">
+                <select id="botTelegramSelect" onchange="filterByBotTelegram()" class="form-select" style="max-width: 300px; display: inline-block;">
+                    <option value="">-- กรุณาเลือกบอท --</option>
+@*                     @foreach (var bot in ViewBag.BotTelegrams)
+                    {
+                        <option value="@bot.BotTelegramToken" selected="@(ViewBag.SelectedBotTelegramToken == bot.BotTelegramToken ? "selected" : null)">
+                            @bot.BotTelegramName
+                        </option>
+                    } *@
+                </select>
             </div>
         </div>
     </div>
+
+    <div class="search-container">
+        <input type="text" class="search-input" placeholder="🔍 ค้นหาคำสั่ง..." onkeyup="searchCommands(this.value)">
+    </div>
+
+    @if (!string.IsNullOrEmpty(ViewBag.SelectedBotTelegramToken))
+    {
+        <div class="stats-bar  mt-4">
+            <span>จำนวนคำสั่งทั้งหมด: <span id="totalCount">@Model.Count()</span></span>
+            <span>แสดงผล: <span id="visibleCount">@Model.Count()</span></span>
+        </div>
+
+        <div class="commands-grid" id="commandsGrid">
+            @if (!Model.Any())
+            {
+                <div class="empty-state">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2L2 7v10c0 5.55 3.84 10 9 11 1.09-.21 2.11-.7 3-1.4.89.7 1.91 1.19 3 1.4 5.16-1 9-5.45 9-11V7l-10-5z" />
+                    </svg>
+                    <h3>ยังไม่มีคำสั่งสำหรับบอทนี้</h3>
+                    <p>ลองเพิ่มคำสั่งใหม่หรือตรวจสอบชื่อบอท</p>
+                </div>
+            }
+            else
+            {
+                @foreach (var cmd in Model)
+                {
+                    <div class="command-card" data-command="@cmd.Command.ToLower()">
+                        <div class="command-header">
+                            <div class="command-name">
+                                @if (cmd.ResponseType == "text")
+                                {
+                                    <span class="type-icon text-icon"></span>
+                                }
+                                else if (cmd.ResponseType == "image")
+                                {
+                                    <span class="type-icon image-icon"></span>
+                                }
+                                else if (cmd.ResponseType == "mediaGroup")
+                                {
+                                    <span class="type-icon carousel-icon"></span>
+                                }
+                                else
+                                {
+                                    <span class="type-icon card-icon"></span>
+                                }
+                                @cmd.Command
+                            </div>
+                            <div class="command-type type-@cmd.ResponseType.ToLower()">
+                                @cmd.ResponseType
+                            </div>
+                        </div>
+
+                        <div class="command-content">
+                            @if (cmd.ResponseType == "image" && !string.IsNullOrEmpty(cmd.ResponseText))
+                            {
+                                <img src="@cmd.ResponseText" alt="Command Image" class="command-image"
+                                     onerror="this.src='https://via.placeholder.com/300x200/cccccc/666666?text=Image+Not+Found'">
+                            }
+                            else if (cmd.ResponseType == "mediaGroup" && !string.IsNullOrEmpty(cmd.ImagesJson))
+                            {
+                                var images = new List<string>();
+                                try
+                                {
+                                    images = Newtonsoft.Json.JsonConvert.DeserializeObject<List<string>>(cmd.ImagesJson);
+                                }
+                                catch { }
+
+                                <div class="carousel-container">
+                                    @foreach (var imgUrl in images)
+                                    {
+                                        <img src="@imgUrl" alt="Media Image" class="carousel-image"
+                                             onerror="this.src='https://via.placeholder.com/120x80/cccccc/666666?text=Error'">
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="command-text">@(cmd.ResponseText ?? "ไม่มีข้อความ")</div>
+                            }
+                        </div>
+
+                        <div class="command-time-range mt-2 text-muted" style="font-size: 0.9em;">
+                            <strong>ช่วงเวลา:</strong>
+                            @if (!string.IsNullOrEmpty(cmd.TimePeriod))
+                            {
+                                @cmd.TimePeriod
+                            }
+                            else
+                            {
+                                <em>ยังไม่ได้กำหนดช่วงเวลา</em>
+                            }
+                        </div>
+
+                        <div class="action-buttons">
+                            <a href="@Url.Action("Edit", "TelegramBot", new { id = cmd.Id })" class="edit-btn">
+                                ✏️ แก้ไข
+                            </a>
+                            <button type="button" class="delete-btn" onclick="confirmDelete('@cmd.Id', '@cmd.Command')">
+                                🗑️ ลบ
+                            </button>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    }
+    else
+    {
+        <p class="text-muted">กรุณาเลือกบอท Telegram เพื่อดูคำสั่ง</p>
+    }
 </div>
 
+<!-- Delete Form -->
+<form id="deleteForm" method="post" style="display: none;">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="_method" value="delete" />
+</form>
+
 <script>
-    // Add some interactive effects
-    document.addEventListener('DOMContentLoaded', function() {
-        // Animate feature items on scroll
-        const featureItems = document.querySelectorAll('.feature-item');
+    function filterByBotTelegram() {
+        const select = document.getElementById('botTelegramSelect');
+        const token = select.value;
+        let url = new URL(window.location.href);
+        if (token) {
+            url.searchParams.set('selectedBotTelegramToken', token);
+        } else {
+            url.searchParams.delete('selectedBotTelegramToken');
+        }
+        window.location.href = url.toString();
+    }
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach((entry, index) => {
-                if (entry.isIntersecting) {
-                    setTimeout(() => {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }, index * 200);
-                }
-            });
+    function searchCommands(query) {
+        const searchTerm = query.toLowerCase();
+        const cards = document.querySelectorAll('.command-card');
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const commandName = card.getAttribute('data-command');
+            const commandText = card.querySelector('.command-text')?.textContent.toLowerCase() || '';
+            const commandType = card.querySelector('.command-type').textContent.toLowerCase();
+
+            const isVisible = commandName.includes(searchTerm) ||
+                              commandText.includes(searchTerm) ||
+                              commandType.includes(searchTerm);
+
+            if (isVisible) {
+                card.style.display = 'block';
+                visibleCount++;
+            } else {
+                card.style.display = 'none';
+            }
         });
 
-        featureItems.forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(30px)';
-            item.style.transition = 'all 0.6s ease';
-            observer.observe(item);
-        });
+        document.getElementById('visibleCount').textContent = visibleCount;
+    }
 
-        // Add click effect to feature items
-        featureItems.forEach(item => {
-            item.addEventListener('click', function() {
-                this.style.transform = 'scale(0.95)';
-                setTimeout(() => {
-                    this.style.transform = 'scale(1)';
-                }, 150);
-            });
+    function confirmDelete(commandId, commandName) {
+        Swal.fire({
+            title: `❗ ต้องการลบคำสั่ง "${commandName}" หรือไม่?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'ใช่, ลบเลย',
+            cancelButtonText: 'ยกเลิก'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const form = document.getElementById('deleteForm');
+                form.action = '@Url.Action("Delete", "TelegramBot")/' + commandId;
+                form.submit();
+            }
         });
-    });
+    }
 </script>

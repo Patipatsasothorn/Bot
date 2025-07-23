@@ -1,0 +1,165 @@
+﻿@model LineBotMVC.Models.TelegramCommand
+@{
+    ViewData["Title"] = "เพิ่มคำสั่งใหม่ (Telegram)";
+}
+
+<div class="main-container">
+    <div class="page-header mt-5">
+        <h1><i class="fab fa-telegram"></i> เพิ่มคำสั่งใหม่ (Telegram)</h1>
+        <p>สร้างคำสั่งใหม่สำหรับ Telegram Bot ของคุณ</p>
+    </div>
+
+    <form id="telegramCommandForm" method="post" enctype="multipart/form-data">
+        <!-- 1️⃣ เลือกบอท Telegram -->
+        <div class="form-section mb-4">
+            <div class="section-title"><i class="fas fa-robot"></i> ข้อมูลบอท</div>
+            <div class="form-group">
+                <label for="BotToken" class="form-label">เลือก Telegram Bot</label>
+                <select name="BotToken" id="BotToken" class="form-select" required>
+                    <option value="">-- กรุณาเลือกบอท --</option>
+@*                     @foreach (var bot in ViewBag.TelegramBots as List<dynamic>)
+                    {
+                        <option value="@bot.Token">@bot.Name</option>
+                    } *@
+                </select>
+            </div>
+        </div>
+
+        <!-- 2️⃣ ข้อมูลพื้นฐาน -->
+        <div class="form-section mb-4">
+            <div class="section-title"><i class="fas fa-terminal"></i> ข้อมูลพื้นฐาน</div>
+            <div class="form-group">
+                <label for="CommandName" class="form-label">คำสั่ง (Command)</label>
+                <input type="text" name="CommandName" id="CommandName" class="form-control"
+                       placeholder="เช่น /hello, hi, สวัสดี" required />
+            </div>
+            <div class="form-group mt-3">
+                <label for="TimePeriod" class="form-label">⏰ ช่วงเวลา</label>
+                <select name="TimePeriod" id="TimePeriod" class="form-select">
+                    <option value="">-- ไม่กำหนดช่วงเวลา (ทุกเวลา) --</option>
+                    <option value="morning">เช้า (06:00 - 11:59)</option>
+                    <option value="afternoon">บ่าย (12:00 - 17:59)</option>
+                    <option value="evening">เย็น (18:00 - 23:59)</option>
+                    <option value="night">ดึก (00:00 - 05:59)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 3️⃣ ประเภทการตอบกลับ -->
+        <div class="form-section mb-4">
+            <div class="section-title"><i class="fas fa-reply"></i> ประเภทการตอบกลับ</div>
+            <div class="response-type-cards d-flex gap-3 flex-wrap">
+                <div class="type-card card p-3 text-center cursor-pointer" data-type="text">
+                    <i class="fas fa-comment fa-2x mb-2"></i>
+                    <h6>ข้อความ</h6>
+                </div>
+                <div class="type-card card p-3 text-center cursor-pointer" data-type="image">
+                    <i class="fas fa-image fa-2x mb-2"></i>
+                    <h6>รูปภาพ</h6>
+                </div>
+                <div class="type-card card p-3 text-center cursor-pointer" data-type="mediaGroup">
+                    <i class="fas fa-images fa-2x mb-2"></i>
+                    <h6>หลายภาพ</h6>
+                </div>
+                <div class="type-card card p-3 text-center cursor-pointer" data-type="inlineKeyboard">
+                    <i class="fas fa-keyboard fa-2x mb-2"></i>
+                    <h6>Inline Keyboard</h6>
+                </div>
+            </div>
+            <input type="hidden" name="ResponseType" id="responseType" value="text" />
+        </div>
+
+        <!-- 4️⃣ เนื้อหาการตอบกลับ -->
+        <div class="form-section" id="responseContentSection">
+            <div class="section-title"><i class="fas fa-edit"></i> เนื้อหาการตอบกลับ</div>
+
+            <!-- Text -->
+            <div id="responseTextDiv">
+                <div class="form-group">
+                    <label class="form-label">ข้อความตอบกลับ</label>
+                    <textarea name="ResponseText" class="form-control" rows="4"
+                              placeholder="กรอกข้อความ..."></textarea>
+                </div>
+            </div>
+
+            <!-- Image -->
+            <div id="responseImageDiv" style="display:none;">
+                <div class="form-group">
+                    <label class="form-label">อัปโหลดรูปภาพ</label>
+                    <input type="file" name="ImageFile" accept="image/*" class="form-control" />
+                </div>
+                <div class="form-group mt-2">
+                    <label class="form-label">หรือ URL รูปภาพ</label>
+                    <input type="url" name="ImageUrl" class="form-control"
+                           placeholder="https://example.com/photo.jpg" />
+                </div>
+            </div>
+
+            <!-- MediaGroup -->
+            <div id="responseMediaGroupDiv" style="display:none;">
+                <div class="form-group">
+                    <label class="form-label">รายการรูปภาพ (JSON Array)</label>
+                    <textarea name="MediaGroupJson" class="form-control" rows="4"
+                              placeholder='[{"type":"photo","media":"url1"}, {"type":"photo","media":"url2"}]'></textarea>
+                    <div class="form-text">ตัวอย่าง: <code>[{"type":"photo","media":"https://...jpg"},...]</code></div>
+                </div>
+            </div>
+
+            <!-- Inline Keyboard -->
+            <div id="responseInlineKbDiv" style="display:none;">
+                <div class="form-group">
+                    <label class="form-label">ข้อความหลัก</label>
+                    <textarea name="KbText" class="form-control" rows="2"
+                              placeholder="ข้อความพร้อมปุ่ม..."></textarea>
+                </div>
+                <div class="form-group mt-2">
+                    <label class="form-label">Inline Keyboard JSON</label>
+                    <textarea name="InlineKeyboardJson" class="form-control" rows="4"
+                              placeholder='{"inline_keyboard":[[{"text":"ปุ่ม1","url":"https://"}]]}'></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- 5️⃣ ปุ่มบันทึก -->
+        <div class="form-actions mt-4 text-end">
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-save me-1"></i> บันทึกคำสั่ง
+            </button>
+        </div>
+    </form>
+</div>
+
+<style>
+    .type-card {
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+        .type-card.active {
+            border: 2px solid #0d6efd;
+            background: #e7f1ff;
+        }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(function(){
+        function showSection(type){
+            $('#responseTextDiv,#responseImageDiv,#responseMediaGroupDiv,#responseInlineKbDiv').hide();
+            if(type==='text')          $('#responseTextDiv').show();
+            else if(type==='image')    $('#responseImageDiv').show();
+            else if(type==='mediaGroup') $('#responseMediaGroupDiv').show();
+            else if(type==='inlineKeyboard') $('#responseInlineKbDiv').show();
+        }
+
+        $('.type-card').click(function(){
+            $('.type-card').removeClass('active');
+            $(this).addClass('active');
+            var t=$(this).data('type');
+            $('#responseType').val(t);
+            showSection(t);
+        });
+        // init
+        $('.type-card[data-type="text"]').click();
+    });
+</script>

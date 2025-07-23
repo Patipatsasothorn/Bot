@@ -12,6 +12,8 @@
         public string CreateBy { get; set; }      // ผู้สร้างคำสั่ง
         public string BotLineName { get; set; }   // ชื่อบอท LINE
         public string BotLineToken { get; set; }  // Token ของ LINE Bot
+        public string? TimePeriod { get; set; }
+
 
     }
 

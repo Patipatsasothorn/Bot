@@ -1,61 +1,93 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\",
+  "WorkspaceRootPath": "D:\\Kew\\Bot\\LineBotMVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\views\\botcommand\\createtelegramc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\botcommand\\createtelegramc.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\controllers\\linewebhookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\linewebhookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\models\\linebot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\models\\linebot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\controllers\\linebotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\linebotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\controllers\\botcommandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\controllers\\botcommandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\botcommandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\views\\botcommand\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\botcommand\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\controllers\\linebotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\linebotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\views\\linebot\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\linebot\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\views\\botcommand\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\views\\botcommand\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\botcommand\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\views\\botcommand\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\botcommand\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\models\\telegramcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\models\\telegramcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\controllers\\linewebhookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\linewebhookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\views\\botcommand\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\botcommand\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\models\\botcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\models\\botcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\models\\linebot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\models\\linebot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\views\\linebot\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\linebot\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\models\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -68,52 +100,28 @@
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\2821a3be9267feb094ff6a782149546abb8e375aba0b6f9beccd8fa1c0d3647d\\TagHelperExecutionContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\models\\botcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\models\\botcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\home\\privacy.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\views\\account\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\views\\account\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\account\\profile.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\views\\botcommand\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\botcommand\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\wwwroot\\css\\rigister.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\wwwroot\\css\\rigister.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\wwwroot\\css\\rigister.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\wwwroot\\css\\rigister.css||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\wwwroot\\css\\rigister.css||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\wwwroot\\css\\rigister.css||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\wwwroot\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\wwwroot\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\wwwroot\\css\\login.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\wwwroot\\css\\login.css||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\kew\\bot\\linebotmvc\\linebotmvc\\wwwroot\\css\\login.css||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\wwwroot\\css\\login.css||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|c:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\bot\\linebotmvc\\linebotmvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -123,7 +131,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 10,
+          "SelectedChildIndex": 14,
           "Children": [
             {
               "$type": "Bookmark",
@@ -135,35 +143,63 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 7,
+              "Title": "TelegramCommand.cs",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Models\\TelegramCommand.cs",
+              "RelativeDocumentMoniker": "LineBotMVC\\Models\\TelegramCommand.cs",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Models\\TelegramCommand.cs",
+              "RelativeToolTip": "LineBotMVC\\Models\\TelegramCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-23T08:21:10.565Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "CreateTelegramC.cshtml",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\CreateTelegramC.cshtml",
+              "RelativeDocumentMoniker": "LineBotMVC\\Views\\BotCommand\\CreateTelegramC.cshtml",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\CreateTelegramC.cshtml",
+              "RelativeToolTip": "LineBotMVC\\Views\\BotCommand\\CreateTelegramC.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-23T08:19:42.287Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
               "Title": "Edit.cshtml",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Edit.cshtml",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Edit.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\BotCommand\\Edit.cshtml",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Edit.cshtml",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Edit.cshtml",
               "RelativeToolTip": "LineBotMVC\\Views\\BotCommand\\Edit.cshtml",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAADkAAAAyAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-21T15:39:45.009Z"
+              "WhenOpened": "2025-07-21T15:39:45.009Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 14,
               "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\HomeController.cs",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\HomeController.cs",
               "RelativeToolTip": "LineBotMVC\\Controllers\\HomeController.cs",
               "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-21T14:32:43.258Z"
+              "WhenOpened": "2025-07-21T14:32:43.258Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 18,
               "Title": "site.css",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\site.css",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\css\\site.css",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\site.css",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\site.css",
               "RelativeToolTip": "LineBotMVC\\wwwroot\\css\\site.css",
               "ViewState": "AgIAAF8DAAAAAAAAAAAQwGQDAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -171,11 +207,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 27,
               "Title": "Rigister.css",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\Rigister.css",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\Rigister.css",
               "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\css\\Rigister.css",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\Rigister.css",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\Rigister.css",
               "RelativeToolTip": "LineBotMVC\\wwwroot\\css\\Rigister.css",
               "ViewState": "AgIAADYBAAAAAAAAAAAmwFUBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -183,11 +219,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 28,
               "Title": "Rigister.css",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\Rigister.css",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\Rigister.css",
               "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\css\\Rigister.css",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\Rigister.css",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\Rigister.css",
               "RelativeToolTip": "LineBotMVC\\wwwroot\\css\\Rigister.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAFUBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -195,24 +231,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 10,
               "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Shared\\_Layout.cshtml",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeToolTip": "LineBotMVC\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAADYAAAAAAAAAAAAAAFAAAAAZAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-07-21T13:30:05.358Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 17,
               "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\AccountController.cs",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\AccountController.cs",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\AccountController.cs",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\AccountController.cs",
               "RelativeToolTip": "LineBotMVC\\Controllers\\AccountController.cs",
               "ViewState": "AgIAABAAAAAAAAAAAAAgwCIAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -221,37 +257,36 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 16,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Program.cs",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Program.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Program.cs",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Program.cs",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Program.cs",
               "RelativeToolTip": "LineBotMVC\\Program.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T09:07:52.663Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-07-19T09:07:52.663Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 15,
               "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\appsettings.json",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\appsettings.json",
               "RelativeDocumentMoniker": "LineBotMVC\\appsettings.json",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\appsettings.json",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\appsettings.json",
               "RelativeToolTip": "LineBotMVC\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2025-07-19T09:08:15.387Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 25,
               "Title": "Profile.cshtml",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Profile.cshtml",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Profile.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\Account\\Profile.cshtml",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Profile.cshtml",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Profile.cshtml",
               "RelativeToolTip": "LineBotMVC\\Views\\Account\\Profile.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -259,24 +294,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 0,
               "Title": "Privacy.cshtml",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Home\\Privacy.cshtml",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\Home\\Privacy.cshtml",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Home\\Privacy.cshtml",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Home\\Privacy.cshtml",
               "RelativeToolTip": "LineBotMVC\\Views\\Home\\Privacy.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-21T16:29:49.761Z"
+              "WhenOpened": "2025-07-21T16:29:49.761Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 24,
               "Title": "TagHelperExecutionContext.cs",
               "DocumentMoniker": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\2821a3be9267feb094ff6a782149546abb8e375aba0b6f9beccd8fa1c0d3647d\\TagHelperExecutionContext.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\2821a3be9267feb094ff6a782149546abb8e375aba0b6f9beccd8fa1c0d3647d\\TagHelperExecutionContext.cs",
               "ToolTip": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\2821a3be9267feb094ff6a782149546abb8e375aba0b6f9beccd8fa1c0d3647d\\TagHelperExecutionContext.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\..\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\2821a3be9267feb094ff6a782149546abb8e375aba0b6f9beccd8fa1c0d3647d\\TagHelperExecutionContext.cs [Read Only]",
               "ViewState": "AgIAAIQAAAAAAAAAAAAMwJIAAAAEAAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-22T04:48:24.349Z",
@@ -284,12 +318,10 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 23,
               "Title": "TagHelperRunner.cs",
               "DocumentMoniker": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\a18fe7825dcbca7023237b1febd0501289b1f55a40ddd6db9740cee147936dff\\TagHelperRunner.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\a18fe7825dcbca7023237b1febd0501289b1f55a40ddd6db9740cee147936dff\\TagHelperRunner.cs",
               "ToolTip": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\a18fe7825dcbca7023237b1febd0501289b1f55a40ddd6db9740cee147936dff\\TagHelperRunner.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\..\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\a18fe7825dcbca7023237b1febd0501289b1f55a40ddd6db9740cee147936dff\\TagHelperRunner.cs [Read Only]",
               "ViewState": "AgIAABMAAAAAAAAAAAAMwCoAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-22T04:48:24.938Z",
@@ -297,24 +329,23 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 8,
               "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Register.cshtml",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\Account\\Register.cshtml",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Register.cshtml",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Register.cshtml",
               "RelativeToolTip": "LineBotMVC\\Views\\Account\\Register.cshtml",
-              "ViewState": "AgIAACgAAAAAAAAAAAAAAC8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAACSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-21T13:49:18.594Z"
+              "WhenOpened": "2025-07-21T13:49:18.594Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 22,
               "Title": "RazorView.cs",
               "DocumentMoniker": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\13bf4daee0917368e00f165ef41e144925d26cc2bd515137743d73786f6b0609\\RazorView.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\13bf4daee0917368e00f165ef41e144925d26cc2bd515137743d73786f6b0609\\RazorView.cs",
               "ToolTip": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\13bf4daee0917368e00f165ef41e144925d26cc2bd515137743d73786f6b0609\\RazorView.cs [Read Only]",
-              "RelativeToolTip": "..\\..\\..\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\13bf4daee0917368e00f165ef41e144925d26cc2bd515137743d73786f6b0609\\RazorView.cs [Read Only]",
               "ViewState": "AgIAAFUAAAAAAAAAAAAMwGcAAAA0AAAAAQAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-22T04:48:28.054Z",
@@ -322,11 +353,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 19,
               "Title": "LineBot.cs",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Models\\LineBot.cs",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Models\\LineBot.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Models\\LineBot.cs",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Models\\LineBot.cs",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Models\\LineBot.cs",
               "RelativeToolTip": "LineBotMVC\\Models\\LineBot.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -334,23 +365,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 3,
               "Title": "LineBotController.cs",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\LineBotController.cs",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\LineBotController.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\LineBotController.cs",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\LineBotController.cs",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\LineBotController.cs",
               "RelativeToolTip": "LineBotMVC\\Controllers\\LineBotController.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAQwDwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAYwCQAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-22T09:03:55.265Z"
+              "WhenOpened": "2025-07-22T09:03:55.265Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 20,
               "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\LineBot\\Create.cshtml",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\LineBot\\Create.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\LineBot\\Create.cshtml",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\LineBot\\Create.cshtml",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\LineBot\\Create.cshtml",
               "RelativeToolTip": "LineBotMVC\\Views\\LineBot\\Create.cshtml",
               "ViewState": "AgIAACUAAAAAAAAAAAAswDcAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -358,11 +390,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 26,
               "Title": "User.cs",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Models\\User.cs",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Models\\User.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Models\\User.cs",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Models\\User.cs",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Models\\User.cs",
               "RelativeToolTip": "LineBotMVC\\Models\\User.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -370,11 +402,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 29,
               "Title": "login.css",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\login.css",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\login.css",
               "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\css\\login.css",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\login.css",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\login.css",
               "RelativeToolTip": "LineBotMVC\\wwwroot\\css\\login.css",
               "ViewState": "AgIAAPYAAAAAAAAAAADwvwgBAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -382,11 +414,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 30,
               "Title": "login.css",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\login.css",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\login.css",
               "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\css\\login.css",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\login.css",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\login.css",
               "RelativeToolTip": "LineBotMVC\\wwwroot\\css\\login.css",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABABAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
@@ -394,83 +426,89 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 6,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Home\\Index.cshtml",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\Home\\Index.cshtml",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "LineBotMVC\\Views\\Home\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-21T13:30:15.586Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "LineBotMVC\\Views\\Account\\Login.cshtml",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "LineBotMVC\\Views\\Account\\Login.cshtml",
-              "ViewState": "AgIAADsAAAAAAAAAAAAowFEAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-21T13:29:51.239Z"
+              "WhenOpened": "2025-07-21T13:30:15.586Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
-              "Title": "Create.cshtml",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Create.cshtml",
-              "RelativeDocumentMoniker": "LineBotMVC\\Views\\BotCommand\\Create.cshtml",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Create.cshtml",
-              "RelativeToolTip": "LineBotMVC\\Views\\BotCommand\\Create.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAARAAAAAAAAAA==",
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "LineBotMVC\\Views\\Account\\Login.cshtml",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Login.cshtml",
+              "RelativeToolTip": "LineBotMVC\\Views\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-19T09:09:22.456Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Index.cshtml",
-              "RelativeDocumentMoniker": "LineBotMVC\\Views\\BotCommand\\Index.cshtml",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Index.cshtml",
-              "RelativeToolTip": "LineBotMVC\\Views\\BotCommand\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-19T09:09:03.044Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "BotCommandController.cs",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\BotCommandController.cs",
-              "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\BotCommandController.cs",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\BotCommandController.cs",
-              "RelativeToolTip": "LineBotMVC\\Controllers\\BotCommandController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAwFEAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T09:06:30.213Z"
+              "WhenOpened": "2025-07-21T13:29:51.239Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "LineWebhookController.cs",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\LineWebhookController.cs",
-              "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\LineWebhookController.cs",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\LineWebhookController.cs",
-              "RelativeToolTip": "LineBotMVC\\Controllers\\LineWebhookController.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAhwE0AAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T09:06:18.276Z"
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Create.cshtml",
+              "RelativeDocumentMoniker": "LineBotMVC\\Views\\BotCommand\\Create.cshtml",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Create.cshtml",
+              "RelativeToolTip": "LineBotMVC\\Views\\BotCommand\\Create.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-19T09:09:22.456Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Index.cshtml",
+              "RelativeDocumentMoniker": "LineBotMVC\\Views\\BotCommand\\Index.cshtml",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Index.cshtml",
+              "RelativeToolTip": "LineBotMVC\\Views\\BotCommand\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-07-19T09:09:03.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BotCommandController.cs",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\BotCommandController.cs",
+              "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\BotCommandController.cs",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\BotCommandController.cs",
+              "RelativeToolTip": "LineBotMVC\\Controllers\\BotCommandController.cs",
+              "ViewState": "AgIAAJUAAAAAAAAAAAAgwKUAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-19T09:06:30.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "LineWebhookController.cs",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\LineWebhookController.cs",
+              "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\LineWebhookController.cs",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\LineWebhookController.cs",
+              "RelativeToolTip": "LineBotMVC\\Controllers\\LineWebhookController.cs",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAAwKIAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-19T09:06:18.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
               "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Models\\ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Models\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Models\\ApplicationDbContext.cs",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Models\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Models\\ApplicationDbContext.cs",
               "RelativeToolTip": "LineBotMVC\\Models\\ApplicationDbContext.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -478,15 +516,16 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 13,
               "Title": "BotCommand.cs",
-              "DocumentMoniker": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Models\\BotCommand.cs",
+              "DocumentMoniker": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Models\\BotCommand.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Models\\BotCommand.cs",
-              "ToolTip": "C:\\\u0E07\u0E32\u0E19\u0E43\u0E2B\u0E21\u0E48\\Bot\\LineBotMVC\\LineBotMVC\\Models\\BotCommand.cs",
+              "ToolTip": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\Models\\BotCommand.cs",
               "RelativeToolTip": "LineBotMVC\\Models\\BotCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T09:05:59.211Z"
+              "WhenOpened": "2025-07-19T09:05:59.211Z",
+              "EditorCaption": ""
             }
           ]
         }

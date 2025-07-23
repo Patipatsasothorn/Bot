@@ -1,31 +1,34 @@
 {
   "format": 1,
   "restore": {
-    "C:\\งานใหม่\\Bot\\LineBotMVC\\LineBotMVC\\LineBotMVC.csproj": {}
+    "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\LineBotMVC.csproj": {}
   },
   "projects": {
-    "C:\\งานใหม่\\Bot\\LineBotMVC\\LineBotMVC\\LineBotMVC.csproj": {
+    "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\LineBotMVC.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\งานใหม่\\Bot\\LineBotMVC\\LineBotMVC\\LineBotMVC.csproj",
+        "projectUniqueName": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\LineBotMVC.csproj",
         "projectName": "LineBotMVC",
-        "projectPath": "C:\\งานใหม่\\Bot\\LineBotMVC\\LineBotMVC\\LineBotMVC.csproj",
-        "packagesPath": "C:\\Users\\UserPRO\\.nuget\\packages\\",
-        "outputPath": "C:\\งานใหม่\\Bot\\LineBotMVC\\LineBotMVC\\obj\\",
+        "projectPath": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\LineBotMVC.csproj",
+        "packagesPath": "C:\\Users\\USER069\\.nuget\\packages\\",
+        "outputPath": "D:\\Kew\\Bot\\LineBotMVC\\LineBotMVC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\UserPRO\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\USER069\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +47,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -84,7 +87,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
