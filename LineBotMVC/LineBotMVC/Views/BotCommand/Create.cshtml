@@ -69,6 +69,11 @@
                     <h5>Card Message</h5>
                     <p>ตอบกลับด้วย Flex Card Message แบบกำหนดเอง</p>
                 </div>
+                <div class="type-card card p-3 text-center cursor-pointer" data-type="imagemap" style="width: 150px;">
+                    <i class="fas fa-map fa-2x mb-2"></i>
+                    <h5>Image Map</h5>
+                    <p>ตอบกลับด้วย Image Map ของ LINE</p>
+                </div>
             </div>
 
             <input type="hidden" name="ResponseType" id="responseType" value="text">
@@ -79,6 +84,22 @@
             <div class="section-title">
                 <i class="fas fa-edit"></i>
                 เนื้อหาการตอบกลับ
+            </div>
+            <div id="imagemapSection" style="display:none; margin-top:20px;">
+                <label>เลือกรูปสำหรับ Image Map (แนะนำขนาด 1040x1040 px):</label>
+                <input type="file" id="imagemapFileInput" accept="image/*" />
+
+                <div id="imageContainer" style="position:relative; margin-top:10px; max-width:520px; border:1px solid #ccc; display:none;">
+                    <img id="imagemapImage" src="" alt="Image Map" style="width:520px; height:520px; user-select:none;" />
+                    <canvas id="imagemapCanvas" width="520" height="520" style="position:absolute; top:0; left:0; cursor:crosshair;"></canvas>
+                </div>
+                <button id="uploadImagemapBtn" type="button" class="btn btn-primary mt-2">อัปโหลดรูป Image Map</button>
+                <button id="addImagemapBaseUrlBtn" type="button" class="btn btn-success mt-2" disabled>เพิ่มรูปนี้เป็น Base URL</button>
+
+                <button id="clearAreasBtn" type="button" style="margin-top:10px;">ล้างโซนทั้งหมด</button>
+
+                <label style="display:block; margin-top:10px;">JSON Image Map (อัปเดตอัตโนมัติ):</label>
+                <textarea id="imagemapJsonOutput" readonly style="width:100%; height:150px; font-family: monospace; font-size:14px; background:#f0f0f0;"></textarea>
             </div>
 
             <div id="responseTextDiv">
@@ -164,6 +185,7 @@
                 <!-- รูปที่อัปโหลดจะแสดงที่นี่ -->
             </div>
         </div>
+ 
 
         <!-- ปุ่มบันทึก -->
         <div class="form-actions mt-4">
@@ -232,25 +254,25 @@
             const type = $(this).data('type');
             $('#responseType').val(type);
 
+            $('#responseTextDiv').hide();
+            $('#imagesJsonDiv').hide();
+            $('#cardBuilderSection').hide();
+            $('#imagemapSection').hide();
+
             if (type === 'carousel') {
                 $('#imagesJsonDiv').show();
-                $('#responseTextDiv').hide();
-                $('#cardBuilderSection').hide();
             } else if (type === 'image') {
                 $('#responseTextDiv').show();
-                $('#imagesJsonDiv').hide();
-                $('#cardBuilderSection').hide();
             } else if (type === 'card') {
-                // แสดงฟอร์มสร้าง Card
                 $('#cardBuilderSection').show();
                 $('#imagesJsonDiv').show();
-                $('#responseTextDiv').hide();
+            } else if (type === 'imagemap') {
+                $('#imagemapSection').show();
             } else {
                 $('#responseTextDiv').show();
-                $('#imagesJsonDiv').hide();
-                $('#cardBuilderSection').hide();
             }
         });
+
 
         // เริ่มต้นด้วย text
         $('.type-card[data-type="text"]').click();
@@ -498,5 +520,226 @@
             submitBtn.html('<i class="fas fa-spinner fa-spin me-2"></i>กำลังบันทึก...');
             submitBtn.prop('disabled', true);
         });
+            // --- Image Map Logic ---
+        (() => {
+        const baseSize = { width: 1040, height: 1040 };
+        const displaySize = { width: 520, height: 520 };
+        let areas = [];
+        let isDrawing = false;
+        let startX = 0, startY = 0;
+
+        const fileInput = document.getElementById('imagemapFileInput');
+        const img = document.getElementById('imagemapImage');
+        const canvas = document.getElementById('imagemapCanvas');
+        const ctx = canvas.getContext('2d');
+        const imageContainer = document.getElementById('imageContainer');
+        const jsonOutput = document.getElementById('imagemapJsonOutput');
+        const clearBtn = document.getElementById('clearAreasBtn');
+
+        const uploadBtn = document.getElementById('uploadImagemapBtn');
+        const addBaseUrlBtn = document.getElementById('addImagemapBaseUrlBtn');
+
+        let uploadedImageUrl = '';  // URL ที่ได้หลังอัปโหลดรูป (baseUrl ที่แท้จริง)
+
+        // ฟังก์ชันแปลงพิกัด display -> base (เดิมเหมือนเดิม)
+        function toBaseCoords(x, y) {
+            return {
+                x: Math.round(x * (baseSize.width / displaySize.width)),
+                y: Math.round(y * (baseSize.height / displaySize.height))
+            };
+        }
+
+        // วาดพื้นที่ใน canvas (เดิมเหมือนเดิม)
+        function drawAreas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            areas.forEach((a, i) => {
+                ctx.fillStyle = 'rgba(13, 110, 253, 0.3)';
+                ctx.strokeStyle = '#0d6efd';
+                ctx.lineWidth = 2;
+                ctx.fillRect(a.x, a.y, a.width, a.height);
+                ctx.strokeRect(a.x, a.y, a.width, a.height);
+                ctx.fillStyle = '#000';
+                ctx.font = '16px Arial';
+                ctx.fillText(i + 1, a.x + 4, a.y + 18);
+            });
+        }
+
+        // อัปเดต JSON output โดยใช้ uploadedImageUrl เป็น baseUrl
+        function updateJsonOutput() {
+            if (!uploadedImageUrl) {
+                jsonOutput.value = "กรุณาอัปโหลดและเพิ่มรูปก่อนครับ";
+                return;
+            }
+
+            const actions = areas.map(a => {
+                const topLeft = toBaseCoords(a.x, a.y);
+                const width = Math.round(a.width * (baseSize.width / displaySize.width));
+                const height = Math.round(a.height * (baseSize.height / displaySize.height));
+
+                return {
+                    type: "uri",
+                    linkUri: a.linkUri || "https://example.com",
+                    area: {
+                        x: topLeft.x,
+                        y: topLeft.y,
+                        width: width,
+                        height: height
+                    }
+                };
+            });
+
+            const json = {
+                type: "imagemap",
+                baseUrl: uploadedImageUrl,
+                altText: "Image Map Message",
+                baseSize: baseSize,
+                actions: actions
+            };
+
+            jsonOutput.value = JSON.stringify(json, null, 2);
+            $('textarea[name="ImagesJson"]').val(jsonOutput.value);
+        }
+
+        // เลือกไฟล์แล้วโชว์ preview (ยังไม่กำหนด baseUrl)
+        fileInput.addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(ev) {
+                img.src = ev.target.result;
+                imageContainer.style.display = 'block';
+
+                areas = [];
+                drawAreas();
+                jsonOutput.value = "กรุณาอัปโหลดและเพิ่มรูปนี้เป็น baseUrl ก่อนใช้งาน";
+                addBaseUrlBtn.disabled = true;
+                uploadedImageUrl = '';
+                $('textarea[name="ImagesJson"]').val('');
+            };
+            reader.readAsDataURL(file);
+        });
+
+        // ปุ่มอัปโหลดรูป Image Map ขึ้นเซิร์ฟเวอร์
+        uploadBtn.addEventListener('click', function() {
+            const file = fileInput.files[0];
+            if (!file) {
+                alert('กรุณาเลือกไฟล์รูปก่อนอัปโหลด');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('imageFile', file);
+
+            uploadBtn.disabled = true;
+            uploadBtn.textContent = 'กำลังอัปโหลด...';
+
+            fetch('/BotCommand/UploadImage', {
+                method: 'POST',
+                body: formData
+            }).then(res => res.json())
+              .then(data => {
+                uploadBtn.disabled = false;
+                uploadBtn.textContent = 'อัปโหลดรูป Image Map';
+
+                if (data.success && data.url) {
+                    alert('อัปโหลดรูปภาพสำเร็จ');
+                    uploadedImageUrl = data.url;
+
+                    // ปุ่มเพิ่ม baseUrl ใช้งานได้
+                    addBaseUrlBtn.disabled = false;
+                } else {
+                    alert('อัปโหลดรูปภาพล้มเหลว: ' + (data.message || ''));
+                }
+              }).catch(() => {
+                uploadBtn.disabled = false;
+                uploadBtn.textContent = 'อัปโหลดรูป Image Map';
+                alert('เกิดข้อผิดพลาดในการอัปโหลดรูป');
+              });
+        });
+
+        // ปุ่มเพิ่มรูปเป็น baseUrl
+        addBaseUrlBtn.addEventListener('click', function() {
+            if (!uploadedImageUrl) {
+                alert('ยังไม่มี URL รูปภาพที่อัปโหลด');
+                return;
+            }
+            updateJsonOutput();
+            alert('เพิ่มรูปภาพเป็น baseUrl เรียบร้อยแล้ว\nคุณสามารถลากวาดพื้นที่บนภาพได้เลย');
+        });
+
+        // วาดพื้นที่ลากบน canvas (เหมือนเดิม)
+        canvas.addEventListener('mousedown', function(e) {
+            if (!uploadedImageUrl) {
+                alert('กรุณาอัปโหลดและเพิ่มรูปก่อนใช้งาน');
+                return;
+            }
+            isDrawing = true;
+            const rect = canvas.getBoundingClientRect();
+            startX = e.clientX - rect.left;
+            startY = e.clientY - rect.top;
+        });
+
+        canvas.addEventListener('mousemove', function(e) {
+            if (!isDrawing) return;
+            const rect = canvas.getBoundingClientRect();
+            const currentX = e.clientX - rect.left;
+            const currentY = e.clientY - rect.top;
+
+            const x = Math.min(startX, currentX);
+            const y = Math.min(startY, currentY);
+            const width = Math.abs(currentX - startX);
+            const height = Math.abs(currentY - startY);
+
+            drawAreas();
+
+            ctx.fillStyle = 'rgba(0, 123, 255, 0.3)';
+            ctx.strokeStyle = '#007bff';
+            ctx.lineWidth = 2;
+            ctx.fillRect(x, y, width, height);
+            ctx.strokeRect(x, y, width, height);
+            ctx.fillStyle = '#000';
+            ctx.font = '16px Arial';
+            ctx.fillText(areas.length + 1, x + 4, y + 18);
+        });
+
+        canvas.addEventListener('mouseup', function(e) {
+            if (!isDrawing) return;
+            isDrawing = false;
+            const rect = canvas.getBoundingClientRect();
+            const endX = e.clientX - rect.left;
+            const endY = e.clientY - rect.top;
+
+            const x = Math.min(startX, endX);
+            const y = Math.min(startY, endY);
+            const width = Math.abs(endX - startX);
+            const height = Math.abs(endY - startY);
+
+            if (width < 10 || height < 10) {
+                alert("ลากพื้นที่ให้ใหญ่กว่านี้");
+                drawAreas();
+                return;
+            }
+
+            const linkUri = prompt("กรุณาใส่ URL ที่จะลิงก์เมื่อคลิกพื้นที่นี้:", "https://");
+            if (linkUri === null || linkUri.trim() === "") {
+                drawAreas();
+                return;
+            }
+
+            areas.push({ x, y, width, height, linkUri: linkUri.trim() });
+            drawAreas();
+            updateJsonOutput();
+        });
+
+        clearBtn.addEventListener('click', function() {
+            if (confirm("ลบพื้นที่ทั้งหมด?")) {
+                areas = [];
+                drawAreas();
+                updateJsonOutput();
+            }
+        });
+    })();
+
     });
 </script>

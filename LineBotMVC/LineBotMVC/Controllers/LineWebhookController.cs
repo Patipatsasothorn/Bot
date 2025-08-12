@@ -148,6 +148,36 @@ namespace LineBotMVC.Controllers
 
                                         await ReplyFlex(matchedBot.ChannelAccessToken, replyCard);
                                     }
+                                    else if (cmd.ResponseType == "imagemap")
+                                    {
+                                        dynamic imagemapJson = JsonConvert.DeserializeObject<dynamic>(cmd.ImagesJson);
+                                        string baseUrl = (string)imagemapJson.baseUrl;
+
+                                        // เติม domain ถ้า baseUrl ยังไม่เต็ม
+                                        string domain = "https://53e95ae1772a.ngrok-free.app"; // เปลี่ยนเป็น URL จริงของคุณ
+                                        if (baseUrl.StartsWith("/"))
+                                        {
+                                            baseUrl = domain + baseUrl;
+                                        }
+
+                                        var replyImagemap = new
+                                        {
+                                            replyToken = replyToken,
+                                            messages = new[] {
+                                                new {
+                                                    type = "imagemap",
+                                                    baseUrl = baseUrl,
+                                                    altText = (string)imagemapJson.altText,
+                                                    baseSize = imagemapJson.baseSize,
+                                                    actions = imagemapJson.actions
+                                                }
+                                            }
+                                        };
+
+                                        await ReplyFlex(matchedBot.ChannelAccessToken, replyImagemap);
+                                    }
+
+
                                     else
                                     {
                                         await ReplyText(matchedBot.ChannelAccessToken, replyToken, "คำสั่งนี้ยังไม่รองรับประเภทข้อความนี้ค่ะ");
