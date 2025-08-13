@@ -113,7 +113,7 @@ namespace LineBotMVC.Controllers
             var folderId = Guid.NewGuid().ToString();
             var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", folderId);
             Directory.CreateDirectory(uploadFolder);
-
+                
             try
             {
                 using (var image = await Image.LoadAsync(imageFile.OpenReadStream()))
