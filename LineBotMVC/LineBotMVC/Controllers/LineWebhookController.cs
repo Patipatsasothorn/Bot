@@ -152,9 +152,8 @@ namespace LineBotMVC.Controllers
                                     {
                                         dynamic imagemapJson = JsonConvert.DeserializeObject<dynamic>(cmd.ImagesJson);
 
-                                        // ใช้ folderId จริงจาก cmd.ImagesJson
-                                        string folderId = imagemapJson.folderId;
-                                        string baseUrl = $"https://botline.xcoptech.net/uploads/{folderId}/1040.png?w=auto";
+                                        // ดึง baseUrl จริงจาก JSON แล้วเติม ?w=auto
+                                        string baseUrl = $"{imagemapJson.baseUrl}.png?w=auto";
 
                                         var replyImagemap = new
                                         {
@@ -181,7 +180,6 @@ namespace LineBotMVC.Controllers
 
                                         await SendReply(matchedBot.ChannelAccessToken, replyImagemap);
                                     }
-
 
 
 
