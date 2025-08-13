@@ -66,3 +66,6 @@ wwwroot\uploads\9670b83d-ee17-41f4-873d-ec7d8395ccc2\460
 wwwroot\uploads\9670b83d-ee17-41f4-873d-ec7d8395ccc2\460.png
 wwwroot\uploads\9670b83d-ee17-41f4-873d-ec7d8395ccc2\700
 wwwroot\uploads\9670b83d-ee17-41f4-873d-ec7d8395ccc2\700.png
+wwwroot\uploads\4a36dbb3-7e7a-4959-962d-bf654bff051b\1040.png
+wwwroot\uploads\4a36dbb3-7e7a-4959-962d-bf654bff051b\460.png
+wwwroot\uploads\4a36dbb3-7e7a-4959-962d-bf654bff051b\700.png

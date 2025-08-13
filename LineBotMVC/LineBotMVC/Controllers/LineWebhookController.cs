@@ -151,37 +151,37 @@ namespace LineBotMVC.Controllers
                                     else if (cmd.ResponseType == "imagemap")
                                     {
                                         dynamic imagemapJson = JsonConvert.DeserializeObject<dynamic>(cmd.ImagesJson);
-                                        string baseUrl = (string)imagemapJson.baseUrl;
 
-                                        // เติม domain ถ้า baseUrl ยังไม่เต็ม
-                                        string domain = "https://botline.xcoptech.net/"; // เปลี่ยนเป็น URL จริงของคุณ
-                                        if (baseUrl.StartsWith("/"))
-                                        {
-                                            baseUrl = domain + baseUrl;
-                                        }
+                                        // ดึง folderId และชื่อไฟล์จาก JSON
+                                        string folderId = (string)imagemapJson.folderId; // สมมุติว่าเก็บ folderId ไว้
+                                        string fileName = "1040"; // ตามขนาด 1040
 
-                                        // ถ้าเป็น http:// ให้แปลงเป็น https://
-                                        if (baseUrl.StartsWith("http://", StringComparison.OrdinalIgnoreCase))
-                                        {
-                                            baseUrl = "https://" + baseUrl.Substring(7); // ตัด http:// ออกแล้วแทนด้วย https://
-                                        }
+                                        // สร้าง baseUrl สำหรับ LINE ImageMap (ไม่มี .png)
+                                        string baseUrl = $"https://botline.xcoptech.net/uploads/{folderId}/{fileName}";
 
                                         var replyImagemap = new
                                         {
                                             replyToken = replyToken,
-                                            messages = new[] {
-                                            new {
-                                                type = "imagemap",
-                                                baseUrl = baseUrl,
-                                                altText = (string)imagemapJson.altText,
-                                                baseSize = imagemapJson.baseSize,
-                                                actions = imagemapJson.actions
+                                            messages = new[]
+                                            {
+                                                new
+                                                {
+                                                    type = "imagemap",
+                                                    baseUrl = baseUrl,
+                                                    altText = (string)imagemapJson.altText,
+                                                    baseSize = new
+                                                    {
+                                                        width = (int)imagemapJson.baseSize.width,
+                                                        height = (int)imagemapJson.baseSize.height
+                                                    },
+                                                    actions = imagemapJson.actions
+                                                }
                                             }
-                                        }
                                         };
 
                                         await ReplyFlex(matchedBot.ChannelAccessToken, replyImagemap);
                                     }
+
 
 
 

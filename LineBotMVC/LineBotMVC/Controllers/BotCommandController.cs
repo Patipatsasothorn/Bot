@@ -117,14 +117,14 @@ namespace LineBotMVC.Controllers
             {
                 using (var image = await Image.LoadAsync(imageFile.OpenReadStream()))
                 {
-                    await SaveResizedImage(image, Path.Combine(uploadFolder, "1040.png"), 1040, 1040);
-                    await SaveResizedImage(image, Path.Combine(uploadFolder, "700.png"), 700, 700);
-                    await SaveResizedImage(image, Path.Combine(uploadFolder, "460.png"), 460, 460);
+                    // ฟังก์ชันช่วยย่อและสร้าง duplicate ไม่มีนามสกุล
+                    await SaveResizedImageAndDuplicate(image, Path.Combine(uploadFolder, "1040.png"), 1040, 1040);
+                    await SaveResizedImageAndDuplicate(image, Path.Combine(uploadFolder, "700.png"), 700, 700);
+                    await SaveResizedImageAndDuplicate(image, Path.Combine(uploadFolder, "460.png"), 460, 460);
                 }
 
-                // baseUrl ส่งให้ LINE รวมชื่อไฟล์ + .png
-                var baseUrl = $"https://{Request.Host}/uploads/{folderId}/1040.png";
-
+                // baseUrl ส่งเป็นโฟลเดอร์เดียวกัน สำหรับ LINE ImageMap
+                var baseUrl = $"https://{Request.Host}/uploads/{folderId}";
                 return Json(new { success = true, baseUrl });
             }
             catch (Exception ex)
@@ -133,14 +133,20 @@ namespace LineBotMVC.Controllers
             }
         }
 
-        // ฟังก์ชันย่อรูป
-        private async Task SaveResizedImage(Image image, string path, int width, int height)
+        // ฟังก์ชันย่อรูป + สร้าง duplicate ไม่มีนามสกุล
+        private async Task SaveResizedImageAndDuplicate(Image image, string path, int width, int height)
         {
             using (var clone = image.Clone(ctx => ctx.Resize(width, height)))
             {
+                // save แบบมีนามสกุล .png
                 await clone.SaveAsync(path, new PngEncoder());
+
+                // duplicate ไฟล์แบบไม่มีนามสกุล
+                var noExtPath = Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path));
+                System.IO.File.Copy(path, noExtPath, true); // ชี้ชัดไปที่ System.IO.File.Copy
             }
         }
+
 
 
 
