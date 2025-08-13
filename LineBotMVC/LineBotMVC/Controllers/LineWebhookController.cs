@@ -157,33 +157,32 @@ namespace LineBotMVC.Controllers
 
                                         string baseUrl = $"https://botline.xcoptech.net/uploads/{folderId}/{fileName}";
 
-                                        // ส่งข้อความบอก URL ของรูปก่อน
-                                        await ReplyText(matchedBot.ChannelAccessToken, replyToken, $"LINE จะเรียกรูปที่: {baseUrl}");
-
-                                        // สร้าง ImageMap
-                                        var replyImagemap = new
+                                        var payload = new
                                         {
                                             replyToken = replyToken,
-                                            messages = new[]
+                                            messages = new object[]
                                             {
-                                                new
-                                                {
-                                                    type = "imagemap",
-                                                    baseUrl = baseUrl,
-                                                    altText = "ImageMap รูปเดียว",
-                                                    baseSize = new
-                                                    {
-                                                        width = (int)imagemapJson.baseSize.width,
-                                                        height = (int)imagemapJson.baseSize.height
-                                                    },
-                                                    actions = imagemapJson.actions
-                                                }
+            new {
+                type = "text",
+                text = $"LINE จะเรียกรูปที่: {baseUrl}"
+            },
+            new {
+                type = "imagemap",
+                baseUrl = baseUrl,
+                altText = "ImageMap รูปเดียว",
+                baseSize = new
+                {
+                    width = (int)imagemapJson.baseSize.width,
+                    height = (int)imagemapJson.baseSize.height
+                },
+                actions = imagemapJson.actions
+            }
                                             }
                                         };
 
-                                        // ส่ง ImageMap
-                                        await SendReply(matchedBot.ChannelAccessToken, replyImagemap);
+                                        await SendReply(matchedBot.ChannelAccessToken, payload);
                                     }
+
 
 
 
