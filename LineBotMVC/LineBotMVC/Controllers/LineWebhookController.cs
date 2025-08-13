@@ -152,7 +152,7 @@ namespace LineBotMVC.Controllers
                                     {
                                         dynamic imagemapJson = JsonConvert.DeserializeObject<dynamic>(cmd.ImagesJson);
 
-                                        string folderId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"; // folderId จาก UploadImagemap
+                                        string folderId = "7be0870a-599a-4031-b11b-b645060f3ea5"; // folderId จาก UploadImagemap
                                         string baseUrl = $"https://botline.xcoptech.net/uploads/{folderId}/1040"; // ไม่มี .png
 
 
