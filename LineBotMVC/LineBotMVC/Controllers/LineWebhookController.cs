@@ -168,7 +168,7 @@ namespace LineBotMVC.Controllers
                                                 {
                                                     type = "imagemap",
                                                     baseUrl = baseUrl,
-                                                    altText = (string)imagemapJson.altText,
+                                                    altText = baseUrl,
                                                     baseSize = new
                                                     {
                                                         width = (int)imagemapJson.baseSize.width,
