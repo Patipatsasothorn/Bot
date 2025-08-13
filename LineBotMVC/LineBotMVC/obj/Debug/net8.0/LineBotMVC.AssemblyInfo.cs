@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LineBotMVC")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57b9b3511b768beecd87feaf890cde2889a4d2ad")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a39952344075da6e884b3116069d88d5e43060b0")]
 [assembly: System.Reflection.AssemblyProductAttribute("LineBotMVC")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LineBotMVC")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
