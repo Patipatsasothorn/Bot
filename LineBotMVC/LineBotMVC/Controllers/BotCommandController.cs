@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.IO;
 using System;
+using System.Drawing;
 
 namespace LineBotMVC.Controllers
 {
@@ -101,50 +102,45 @@ namespace LineBotMVC.Controllers
             if (imageFile == null || imageFile.Length == 0)
                 return Json(new { success = false, message = "กรุณาเลือกไฟล์รูปภาพ" });
 
-            // ตรวจสอบชนิดไฟล์ (MIME type)
-            var allowedTypes = new[] { "image/jpeg", "image/png", "image/webp" }; // เพิ่มชนิดอื่นได้ตามต้องการ
+            var allowedTypes = new[] { "image/jpeg", "image/png", "image/webp" };
             if (!allowedTypes.Contains(imageFile.ContentType))
-                return Json(new { success = false, message = "รองรับเฉพาะไฟล์รูปภาพ .jpg, .png, .webp เท่านั้น (ไม่รองรับ GIF)" });
+                return Json(new { success = false, message = "รองรับเฉพาะไฟล์ JPG, PNG, WEBP" });
 
-            var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
-            if (!Directory.Exists(uploadFolder))
+            // สร้างโฟลเดอร์เฉพาะ
+            var folderId = Guid.NewGuid().ToString();
+            var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", folderId);
+            Directory.CreateDirectory(uploadFolder);
+
+            // อ่านรูปจาก stream
+            using (var stream = imageFile.OpenReadStream())
+            using (var image = System.Drawing.Image.FromStream(stream))
             {
-                try
-                {
-                    Directory.CreateDirectory(uploadFolder);
-                }
-                catch (Exception ex)
-                {
-                    return Json(new { success = false, message = "สร้างโฟลเดอร์อัปโหลดไม่สำเร็จ: " + ex.Message });
-                }
+                // บันทึกรูป 3 ขนาด
+                SaveResizedImage(image, Path.Combine(uploadFolder, "1040.png"), 1040, 1040);
+                SaveResizedImage(image, Path.Combine(uploadFolder, "700.png"), 700, 700);
+                SaveResizedImage(image, Path.Combine(uploadFolder, "460.png"), 460, 460);
             }
 
-            var extension = Path.GetExtension(imageFile.FileName); // เก็บนามสกุลจริง
-            var uniqueFileName = Guid.NewGuid().ToString() + extension;
-            var filePath = Path.Combine(uploadFolder, uniqueFileName);
+            // baseUrl ต้องเป็น HTTPS และไม่ลงท้ายด้วย /1040
+            var baseUrl = $"https://{Request.Host}/uploads/{folderId}";
 
-            try
-            {
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await imageFile.CopyToAsync(stream);
-                }
-            }
-            catch (Exception ex)
-            {
-                return Json(new { success = false, message = "บันทึกรูปภาพล้มเหลว: " + ex.Message });
-            }
-
-            // LINE ImageMap baseUrl ต้องไม่มีนามสกุลไฟล์
-            var baseUrl = $"{Request.Scheme}://{Request.Host}/uploads/{Path.GetFileNameWithoutExtension(uniqueFileName)}";
-            var baseUrl1040 = baseUrl + "/1040";
-
-            return Json(new
-            {
-                success = true,
-                baseUrl = baseUrl1040
-            });
+            return Json(new { success = true, baseUrl });
         }
+
+        // ฟังก์ชันย่อรูป
+        private void SaveResizedImage(System.Drawing.Image image, string path, int width, int height)
+        {
+            using (var newImage = new System.Drawing.Bitmap(width, height))
+            using (var g = System.Drawing.Graphics.FromImage(newImage))
+            {
+                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
+                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
+                g.DrawImage(image, 0, 0, width, height);
+                newImage.Save(path, System.Drawing.Imaging.ImageFormat.Png);
+            }
+        }
+
 
 
 

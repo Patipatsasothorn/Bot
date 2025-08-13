@@ -160,22 +160,29 @@ namespace LineBotMVC.Controllers
                                             baseUrl = domain + baseUrl;
                                         }
 
+                                        // ถ้าเป็น http:// ให้แปลงเป็น https://
+                                        if (baseUrl.StartsWith("http://", StringComparison.OrdinalIgnoreCase))
+                                        {
+                                            baseUrl = "https://" + baseUrl.Substring(7); // ตัด http:// ออกแล้วแทนด้วย https://
+                                        }
+
                                         var replyImagemap = new
                                         {
                                             replyToken = replyToken,
                                             messages = new[] {
-                                                new {
-                                                    type = "imagemap",
-                                                    baseUrl = baseUrl,
-                                                    altText = (string)imagemapJson.altText,
-                                                    baseSize = imagemapJson.baseSize,
-                                                    actions = imagemapJson.actions
-                                                }
+                                            new {
+                                                type = "imagemap",
+                                                baseUrl = baseUrl,
+                                                altText = (string)imagemapJson.altText,
+                                                baseSize = imagemapJson.baseSize,
+                                                actions = imagemapJson.actions
                                             }
+                                        }
                                         };
 
                                         await ReplyFlex(matchedBot.ChannelAccessToken, replyImagemap);
                                     }
+
 
 
                                     else
