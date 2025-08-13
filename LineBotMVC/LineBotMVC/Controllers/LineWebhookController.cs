@@ -179,7 +179,7 @@ namespace LineBotMVC.Controllers
                                             }
                                         };
 
-                                        await ReplyFlex(matchedBot.ChannelAccessToken, replyImagemap);
+                                        await SendReply(matchedBot.ChannelAccessToken, replyImagemap);
                                     }
 
 
