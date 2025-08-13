@@ -33,21 +33,20 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-app.UseStaticFiles();
-
 // *** เพิ่ม Serve static files จากโฟลเดอร์ uploads ***
-var uploadsPath = Path.Combine(Directory.GetCurrentDirectory(), "uploads");
-if (!Directory.Exists(uploadsPath))
-{
-    Directory.CreateDirectory(uploadsPath); // สร้างโฟลเดอร์ถ้ายังไม่มี
-}
-
+app.UseStaticFiles(); // สำหรับ wwwroot folder
 app.UseStaticFiles(new StaticFileOptions
 {
-    FileProvider = new PhysicalFileProvider(uploadsPath),
-    RequestPath = "/uploads"
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "wwwroot", "uploads")),
+    RequestPath = "/uploads",
+    OnPrepareResponse = ctx =>
+    {
+        // ตั้งค่า Cache และ CORS headers
+        ctx.Context.Response.Headers.Add("Access-Control-Allow-Origin", "*");
+        ctx.Context.Response.Headers.Add("Cache-Control", "public,max-age=600");
+    }
 });
-
 app.UseRouting();
 
 // ✅ ใช้งาน Session ก่อน Authorization

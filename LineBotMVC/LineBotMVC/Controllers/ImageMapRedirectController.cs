@@ -3,18 +3,18 @@ using System.IO;
 
 namespace LineBotMVC.Controllers
 {
-    [Route("uploads/{folderId}/{fileName}/{index}")]
+    [Route("imagemap/{folderId}/{fileName}/{index}")]
     public class ImageMapRedirectController : Controller
     {
         [HttpGet]
         public IActionResult RedirectImage(string folderId, string fileName, string index)
         {
-            // ส่งกลับรูปเดียว ไม่ต้องสนใจ index อื่น
-            if (fileName != "1040" || index != "0")
+            // ตรวจสอบว่ากำหนดไฟล์จริง 1040 เท่านั้น
+            if (fileName != "1040")
                 return NotFound();
 
-            string actualFile = "1040.png";
-            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", folderId, actualFile);
+            // ชี้ไปที่ไฟล์จริง
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", folderId, "1040.png");
 
             if (!System.IO.File.Exists(filePath))
                 return NotFound();

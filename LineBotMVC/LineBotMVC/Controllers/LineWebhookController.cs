@@ -152,35 +152,36 @@ namespace LineBotMVC.Controllers
                                     {
                                         dynamic imagemapJson = JsonConvert.DeserializeObject<dynamic>(cmd.ImagesJson);
 
-                                        string folderId = "7be0870a-599a-4031-b11b-b645060f3ea5"; // folderId จาก UploadImagemap
-                                        string baseUrl = $"https://botline.xcoptech.net/uploads/{folderId}/1040"; // ไม่มี .png
-
+                                        // ใช้ folderId จริงจาก cmd.ImagesJson
+                                        string folderId = imagemapJson.folderId;
+                                        string baseUrl = $"https://botline.xcoptech.net/uploads/{folderId}/1040.png?w=auto";
 
                                         var replyImagemap = new
                                         {
                                             replyToken = replyToken,
                                             messages = new object[]
                                             {
-                                            new {
-                                                type = "text",
-                                                text = $"LINE จะเรียกรูปที่: {baseUrl}"
-                                            },
-                                            new {
-                                                type = "imagemap",
-                                                baseUrl = baseUrl,
-                                                altText = "ImageMap รูปเดียว",
-                                                baseSize = new
-                                                {
-                                                    width = (int)imagemapJson.baseSize.width,
-                                                    height = (int)imagemapJson.baseSize.height
+                                                new {
+                                                    type = "text",
+                                                    text = $"LINE จะเรียกรูปที่: {baseUrl}"
                                                 },
-                                                actions = imagemapJson.actions
-                                            }
+                                                new {
+                                                    type = "imagemap",
+                                                    baseUrl = baseUrl,
+                                                    altText = "ImageMap รูปเดียว",
+                                                    baseSize = new
+                                                    {
+                                                        width = (int)imagemapJson.baseSize.width,
+                                                        height = (int)imagemapJson.baseSize.height
+                                                    },
+                                                    actions = imagemapJson.actions
+                                                }
                                             }
                                         };
 
                                         await SendReply(matchedBot.ChannelAccessToken, replyImagemap);
                                     }
+
 
 
 
