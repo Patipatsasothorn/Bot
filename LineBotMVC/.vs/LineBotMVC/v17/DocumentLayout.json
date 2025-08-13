@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\Bot\\LineBotMVC\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\bot\\linebotmvc\\linebotmvc\\controllers\\botcommandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\botcommandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\bot\\linebotmvc\\linebotmvc\\controllers\\linewebhookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\linewebhookcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\bot\\linebotmvc\\linebotmvc\\controllers\\botcommandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\botcommandcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\bot\\linebotmvc\\linebotmvc\\controllers\\imagemapredirectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|solutionrelative:linebotmvc\\controllers\\imagemapredirectcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{9B362ADA-9ED8-4234-9055-E779297DF796}|LineBotMVC\\LineBotMVC.csproj|d:\\bot\\linebotmvc\\linebotmvc\\controllers\\linebotcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -135,23 +139,24 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "favicon.ico - Icon [32x32, 32 bit, BMP]",
-              "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\favicon.ico",
-              "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\favicon.ico",
-              "ToolTip": "D:\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
-              "RelativeToolTip": "LineBotMVC\\wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
-              "WhenOpened": "2025-08-13T17:07:02.643Z",
-              "EditorCaption": " - Icon [32x32, 32 bit, BMP]"
+              "DocumentIndex": 2,
+              "Title": "ImageMapRedirectController.cs",
+              "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\ImageMapRedirectController.cs",
+              "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\ImageMapRedirectController.cs",
+              "ToolTip": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\ImageMapRedirectController.cs",
+              "RelativeToolTip": "LineBotMVC\\Controllers\\ImageMapRedirectController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-13T19:18:23.686Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "Program.cs",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Program.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Program.cs",
@@ -163,7 +168,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Index.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\BotCommand\\Index.cshtml",
@@ -175,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Create.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\BotCommand\\Create.cshtml",
@@ -187,19 +192,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "BotCommandController.cs",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\BotCommandController.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\BotCommandController.cs",
               "ToolTip": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\BotCommandController.cs",
               "RelativeToolTip": "LineBotMVC\\Controllers\\BotCommandController.cs",
-              "ViewState": "AgIAAMcAAAAAAAAAAAAkwPQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAhwIYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T09:06:30.213Z"
+              "WhenOpened": "2025-07-19T09:06:30.213Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "TelegramCommand.cs",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Models\\TelegramCommand.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Models\\TelegramCommand.cs",
@@ -211,7 +217,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\HomeController.cs",
@@ -223,16 +229,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "LineWebhookController.cs",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\LineWebhookController.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\LineWebhookController.cs",
               "ToolTip": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\LineWebhookController.cs",
               "RelativeToolTip": "LineBotMVC\\Controllers\\LineWebhookController.cs",
-              "ViewState": "AgIAAJYAAAAAAAAAAAAAALIAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAAALEAAABrAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-07-19T09:06:18.276Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\favicon.ico",
+              "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\favicon.ico",
+              "ToolTip": "D:\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "RelativeToolTip": "LineBotMVC\\wwwroot\\favicon.ico - Icon [32x32, 32 bit, BMP]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001525|",
+              "WhenOpened": "2025-08-13T17:07:02.643Z",
+              "EditorCaption": " - Icon [32x32, 32 bit, BMP]"
             },
             {
               "$type": "Bookmark",
@@ -240,7 +258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "AccountController.cs",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\AccountController.cs",
@@ -252,7 +270,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "LineBotController.cs",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Controllers\\LineBotController.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Controllers\\LineBotController.cs",
@@ -264,7 +282,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\Home\\Index.cshtml",
@@ -276,7 +294,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Models\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Models\\ApplicationDbContext.cs",
@@ -288,7 +306,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Login.cshtml",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Login.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\Account\\Login.cshtml",
@@ -300,7 +318,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "LineBot.cs",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Models\\LineBot.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Models\\LineBot.cs",
@@ -312,7 +330,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "User.cs",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Models\\User.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Models\\User.cs",
@@ -324,7 +342,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Create.cshtml",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Views\\LineBot\\Create.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\LineBot\\Create.cshtml",
@@ -336,7 +354,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "appsettings.json",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\appsettings.json",
               "RelativeDocumentMoniker": "LineBotMVC\\appsettings.json",
@@ -348,7 +366,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "site.css",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\css\\site.css",
@@ -360,7 +378,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 30,
               "Title": "Profile.cshtml",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Profile.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\Account\\Profile.cshtml",
@@ -372,7 +390,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "CreateTelegramC.cshtml",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\CreateTelegramC.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\BotCommand\\CreateTelegramC.cshtml",
@@ -384,7 +402,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "Rigister.css",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\Rigister.css",
               "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\css\\Rigister.css",
@@ -396,7 +414,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 24,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\Shared\\_Layout.cshtml",
@@ -408,7 +426,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 25,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Views\\BotCommand\\Edit.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\BotCommand\\Edit.cshtml",
@@ -420,7 +438,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "Privacy.cshtml",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Home\\Privacy.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\Home\\Privacy.cshtml",
@@ -432,7 +450,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "Rigister.css",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\Rigister.css",
               "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\css\\Rigister.css",
@@ -444,7 +462,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 29,
               "Title": "TagHelperExecutionContext.cs",
               "DocumentMoniker": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\2821a3be9267feb094ff6a782149546abb8e375aba0b6f9beccd8fa1c0d3647d\\TagHelperExecutionContext.cs",
               "ToolTip": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\2821a3be9267feb094ff6a782149546abb8e375aba0b6f9beccd8fa1c0d3647d\\TagHelperExecutionContext.cs",
@@ -453,7 +471,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 28,
               "Title": "TagHelperRunner.cs",
               "DocumentMoniker": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\a18fe7825dcbca7023237b1febd0501289b1f55a40ddd6db9740cee147936dff\\TagHelperRunner.cs",
               "ToolTip": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\a18fe7825dcbca7023237b1febd0501289b1f55a40ddd6db9740cee147936dff\\TagHelperRunner.cs",
@@ -462,7 +480,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 23,
               "Title": "Register.cshtml",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Views\\Account\\Register.cshtml",
               "RelativeDocumentMoniker": "LineBotMVC\\Views\\Account\\Register.cshtml",
@@ -474,7 +492,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 27,
               "Title": "RazorView.cs",
               "DocumentMoniker": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\13bf4daee0917368e00f165ef41e144925d26cc2bd515137743d73786f6b0609\\RazorView.cs",
               "ToolTip": "C:\\Users\\USER069\\AppData\\Local\\Temp\\.vsdbgsrc\\13bf4daee0917368e00f165ef41e144925d26cc2bd515137743d73786f6b0609\\RazorView.cs",
@@ -483,7 +501,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 31,
               "Title": "login.css",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\login.css",
               "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\css\\login.css",
@@ -495,7 +513,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
+              "DocumentIndex": 32,
               "Title": "login.css",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\wwwroot\\css\\login.css",
               "RelativeDocumentMoniker": "LineBotMVC\\wwwroot\\css\\login.css",
@@ -507,7 +525,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 26,
               "Title": "BotCommand.cs",
               "DocumentMoniker": "D:\\Bot\\LineBotMVC\\LineBotMVC\\Models\\BotCommand.cs",
               "RelativeDocumentMoniker": "LineBotMVC\\Models\\BotCommand.cs",

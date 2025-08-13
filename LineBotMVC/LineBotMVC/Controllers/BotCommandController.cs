@@ -108,24 +108,22 @@ namespace LineBotMVC.Controllers
             if (!allowedTypes.Contains(imageFile.ContentType))
                 return Json(new { success = false, message = "รองรับเฉพาะไฟล์ JPG, PNG, WEBP" });
 
-            // สร้างโฟลเดอร์เฉพาะ
             var folderId = Guid.NewGuid().ToString();
             var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", folderId);
             Directory.CreateDirectory(uploadFolder);
 
             try
             {
-                using (var image = await Image.LoadAsync(imageFile.OpenReadStream()))
+                using (var image = await SixLabors.ImageSharp.Image.LoadAsync(imageFile.OpenReadStream()))
                 {
-                    // ฟังก์ชันช่วยย่อและสร้าง duplicate ไม่มีนามสกุล
+                    // สร้างไฟล์ 1040.png
                     await SaveResizedImageAndDuplicate(image, Path.Combine(uploadFolder, "1040.png"), 1040, 1040);
-                    await SaveResizedImageAndDuplicate(image, Path.Combine(uploadFolder, "700.png"), 700, 700);
-                    await SaveResizedImageAndDuplicate(image, Path.Combine(uploadFolder, "460.png"), 460, 460);
                 }
 
-                // baseUrl ส่งเป็นโฟลเดอร์เดียวกัน สำหรับ LINE ImageMap
-                var baseUrl = $"https://{Request.Host}/uploads/{folderId}";
-                return Json(new { success = true, baseUrl });
+                // baseUrl สำหรับ LINE ImageMap (ไม่มี .png)
+                var baseUrl = $"https://{Request.Host}/uploads/{folderId}/1040";
+
+                return Json(new { success = true, baseUrl, folderId });
             }
             catch (Exception ex)
             {
@@ -133,19 +131,19 @@ namespace LineBotMVC.Controllers
             }
         }
 
-        // ฟังก์ชันย่อรูป + สร้าง duplicate ไม่มีนามสกุล
-        private async Task SaveResizedImageAndDuplicate(Image image, string path, int width, int height)
+        private async Task SaveResizedImageAndDuplicate(SixLabors.ImageSharp.Image image, string path, int width, int height)
         {
             using (var clone = image.Clone(ctx => ctx.Resize(width, height)))
             {
-                // save แบบมีนามสกุล .png
-                await clone.SaveAsync(path, new PngEncoder());
+                // save แบบมี .png
+                await clone.SaveAsync(path, new SixLabors.ImageSharp.Formats.Png.PngEncoder());
 
-                // duplicate ไฟล์แบบไม่มีนามสกุล
+                // duplicate แบบไม่มีนามสกุล
                 var noExtPath = Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path));
-                System.IO.File.Copy(path, noExtPath, true); // ชี้ชัดไปที่ System.IO.File.Copy
+                System.IO.File.Copy(path, noExtPath, true);
             }
         }
+
 
 
 

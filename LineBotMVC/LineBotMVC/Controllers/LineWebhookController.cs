@@ -152,37 +152,39 @@ namespace LineBotMVC.Controllers
                                     {
                                         dynamic imagemapJson = JsonConvert.DeserializeObject<dynamic>(cmd.ImagesJson);
 
-                                        string folderId = "7be0870a-599a-4031-b11b-b645060f3ea5";
-                                        string fileName = "1040.png"; // ใช้ไฟล์เดียว
+                                        string folderId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"; // folderId จาก UploadImagemap
+                                        string baseUrl = $"https://botline.xcoptech.net/uploads/{folderId}/1040"; // ไม่มี .png
 
-                                        string baseUrl = $"https://botline.xcoptech.net/uploads/{folderId}/{fileName}";
-
-                                        var payload = new
+                                        var replyImagemap = new
                                         {
                                             replyToken = replyToken,
-                                            messages = new object[]
+                                            messages = new[]
                                             {
-            new {
-                type = "text",
-                text = $"LINE จะเรียกรูปที่: {baseUrl}"
-            },
-            new {
-                type = "imagemap",
-                baseUrl = baseUrl,
-                altText = "ImageMap รูปเดียว",
-                baseSize = new
-                {
-                    width = (int)imagemapJson.baseSize.width,
-                    height = (int)imagemapJson.baseSize.height
-                },
-                actions = imagemapJson.actions
-            }
+                                                new
+                                                {
+                                                    type = "imagemap",
+                                                    baseUrl = baseUrl,
+                                                    altText = "ImageMap รูปเดียว",
+                                                    baseSize = new
+                                                    {
+                                                        width = 1040,
+                                                        height = 1040
+                                                    },
+                                                    actions = new[]
+                                                    {
+                                                        new
+                                                        {
+                                                            type = "uri",
+                                                            linkUri = "https://www.google.com", // ตัวอย่าง
+                                                            area = new { x = 0, y = 0, width = 1040, height = 1040 }
+                                                        }
+                                                    }
+                                                }
                                             }
                                         };
 
-                                        await SendReply(matchedBot.ChannelAccessToken, payload);
+                                        await SendReply(matchedBot.ChannelAccessToken, replyImagemap);
                                     }
-
 
 
 
