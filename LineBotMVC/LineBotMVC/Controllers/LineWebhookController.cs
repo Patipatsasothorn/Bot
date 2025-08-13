@@ -94,7 +94,7 @@ namespace LineBotMVC.Controllers
                                             hero = new
                                             {
                                                 type = "image",
-                                                url = url.StartsWith("http") ? url : $"https://yourdomain.com{url}",
+                                                url = url.StartsWith("http") ? url : $"https://botline.xcoptech.net{url}",
                                                 size = "full",
                                                 aspectRatio = "20:13",
                                                 aspectMode = "cover"
