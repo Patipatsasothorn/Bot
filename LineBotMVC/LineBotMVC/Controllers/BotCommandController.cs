@@ -99,6 +99,7 @@ namespace LineBotMVC.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
+        [HttpPost]
         public async Task<IActionResult> UploadImagemap(IFormFile imageFile)
         {
             if (imageFile == null || imageFile.Length == 0)
@@ -108,30 +109,26 @@ namespace LineBotMVC.Controllers
             if (!allowedTypes.Contains(imageFile.ContentType))
                 return Json(new { success = false, message = "รองรับเฉพาะไฟล์ JPG, PNG, WEBP" });
 
-            // ใช้ path ใน wwwroot/uploads
-            var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
-            if (!Directory.Exists(uploadFolder))
-                Directory.CreateDirectory(uploadFolder);
-
-            // ตั้งชื่อไฟล์แบบสุ่มไม่ซ้ำ
-            var fileId = Guid.NewGuid().ToString();
+            // สร้างโฟลเดอร์เฉพาะ
+            var folderId = Guid.NewGuid().ToString();
+            var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", folderId);
+            Directory.CreateDirectory(uploadFolder);
 
             try
             {
                 using (var image = await Image.LoadAsync(imageFile.OpenReadStream()))
                 {
-                    await SaveResizedImage(image, Path.Combine(uploadFolder, fileId + "_1040.png"), 1040, 1040);
-                    await SaveResizedImage(image, Path.Combine(uploadFolder, fileId + "_700.png"), 700, 700);
-                    await SaveResizedImage(image, Path.Combine(uploadFolder, fileId + "_460.png"), 460, 460);
+                    await SaveResizedImage(image, Path.Combine(uploadFolder, "1040.png"), 1040, 1040);
+                    await SaveResizedImage(image, Path.Combine(uploadFolder, "700.png"), 700, 700);
+                    await SaveResizedImage(image, Path.Combine(uploadFolder, "460.png"), 460, 460);
                 }
 
-                // baseUrl ของ LINE ImageMap ต้องไม่รวม .png
-                var baseUrl = $"https://{Request.Host}/uploads/{fileId}";
+                var baseUrl = $"https://{Request.Host}/uploads/{folderId}";
                 return Json(new { success = true, baseUrl });
             }
             catch (Exception ex)
             {
-                return Json(new { success = false, message = ex.ToString() });
+                return Json(new { success = false, message = ex.Message });
             }
         }
 
