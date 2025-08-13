@@ -152,13 +152,15 @@ namespace LineBotMVC.Controllers
                                     {
                                         dynamic imagemapJson = JsonConvert.DeserializeObject<dynamic>(cmd.ImagesJson);
 
-                                        // ดึง folderId และชื่อไฟล์จาก JSON
-                                        string folderId = "7be0870a-599a-4031-b11b-b645060f3ea5"; // สมมุติว่าเก็บ folderId ไว้
-                                        string fileName = "1040.png"; // ตามขนาด 1040
+                                        string folderId = "7be0870a-599a-4031-b11b-b645060f3ea5";
+                                        string fileName = "1040.png"; // ใช้ไฟล์เดียว
 
-                                        // สร้าง baseUrl สำหรับ LINE ImageMap (ไม่มี .png)
                                         string baseUrl = $"https://botline.xcoptech.net/uploads/{folderId}/{fileName}";
 
+                                        // ส่งข้อความบอก URL ของรูปก่อน
+                                        await ReplyText(matchedBot.ChannelAccessToken, replyToken, $"LINE จะเรียกรูปที่: {baseUrl}");
+
+                                        // สร้าง ImageMap
                                         var replyImagemap = new
                                         {
                                             replyToken = replyToken,
@@ -168,7 +170,7 @@ namespace LineBotMVC.Controllers
                                                 {
                                                     type = "imagemap",
                                                     baseUrl = baseUrl,
-                                                    altText = baseUrl,
+                                                    altText = "ImageMap รูปเดียว",
                                                     baseSize = new
                                                     {
                                                         width = (int)imagemapJson.baseSize.width,
@@ -179,9 +181,9 @@ namespace LineBotMVC.Controllers
                                             }
                                         };
 
+                                        // ส่ง ImageMap
                                         await SendReply(matchedBot.ChannelAccessToken, replyImagemap);
                                     }
-
 
 
 
