@@ -155,31 +155,27 @@ namespace LineBotMVC.Controllers
                                         string folderId = "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"; // folderId จาก UploadImagemap
                                         string baseUrl = $"https://botline.xcoptech.net/uploads/{folderId}/1040"; // ไม่มี .png
 
+
                                         var replyImagemap = new
                                         {
                                             replyToken = replyToken,
-                                            messages = new[]
+                                            messages = new object[]
                                             {
-                                                new
+                                            new {
+                                                type = "text",
+                                                text = $"LINE จะเรียกรูปที่: {baseUrl}"
+                                            },
+                                            new {
+                                                type = "imagemap",
+                                                baseUrl = baseUrl,
+                                                altText = "ImageMap รูปเดียว",
+                                                baseSize = new
                                                 {
-                                                    type = "imagemap",
-                                                    baseUrl = baseUrl,
-                                                    altText = "ImageMap รูปเดียว",
-                                                    baseSize = new
-                                                    {
-                                                        width = 1040,
-                                                        height = 1040
-                                                    },
-                                                    actions = new[]
-                                                    {
-                                                        new
-                                                        {
-                                                            type = "uri",
-                                                            linkUri = "https://www.google.com", // ตัวอย่าง
-                                                            area = new { x = 0, y = 0, width = 1040, height = 1040 }
-                                                        }
-                                                    }
-                                                }
+                                                    width = (int)imagemapJson.baseSize.width,
+                                                    height = (int)imagemapJson.baseSize.height
+                                                },
+                                                actions = imagemapJson.actions
+                                            }
                                             }
                                         };
 
