@@ -154,7 +154,7 @@ namespace LineBotMVC.Controllers
                                         string baseUrl = (string)imagemapJson.baseUrl;
 
                                         // เติม domain ถ้า baseUrl ยังไม่เต็ม
-                                        string domain = "https://53e95ae1772a.ngrok-free.app"; // เปลี่ยนเป็น URL จริงของคุณ
+                                        string domain = "https://botline.xcoptech.net/"; // เปลี่ยนเป็น URL จริงของคุณ
                                         if (baseUrl.StartsWith("/"))
                                         {
                                             baseUrl = domain + baseUrl;

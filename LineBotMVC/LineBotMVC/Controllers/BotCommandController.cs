@@ -95,6 +95,57 @@ namespace LineBotMVC.Controllers
 
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public async Task<IActionResult> UploadImagemap(IFormFile imageFile)
+        {
+            if (imageFile == null || imageFile.Length == 0)
+                return Json(new { success = false, message = "กรุณาเลือกไฟล์รูปภาพ" });
+
+            // ตรวจสอบชนิดไฟล์ (MIME type)
+            var allowedTypes = new[] { "image/jpeg", "image/png", "image/webp" }; // เพิ่มชนิดอื่นได้ตามต้องการ
+            if (!allowedTypes.Contains(imageFile.ContentType))
+                return Json(new { success = false, message = "รองรับเฉพาะไฟล์รูปภาพ .jpg, .png, .webp เท่านั้น (ไม่รองรับ GIF)" });
+
+            var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads");
+            if (!Directory.Exists(uploadFolder))
+            {
+                try
+                {
+                    Directory.CreateDirectory(uploadFolder);
+                }
+                catch (Exception ex)
+                {
+                    return Json(new { success = false, message = "สร้างโฟลเดอร์อัปโหลดไม่สำเร็จ: " + ex.Message });
+                }
+            }
+
+            var extension = Path.GetExtension(imageFile.FileName); // เก็บนามสกุลจริง
+            var uniqueFileName = Guid.NewGuid().ToString() + extension;
+            var filePath = Path.Combine(uploadFolder, uniqueFileName);
+
+            try
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+            }
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = "บันทึกรูปภาพล้มเหลว: " + ex.Message });
+            }
+
+            // LINE ImageMap baseUrl ต้องไม่มีนามสกุลไฟล์
+            var baseUrl = $"{Request.Scheme}://{Request.Host}/uploads/{Path.GetFileNameWithoutExtension(uniqueFileName)}";
+            var baseUrl1040 = baseUrl + "/1040";
+
+            return Json(new
+            {
+                success = true,
+                baseUrl = baseUrl1040
+            });
+        }
+
 
 
         // POST: BotCommand/UploadImage

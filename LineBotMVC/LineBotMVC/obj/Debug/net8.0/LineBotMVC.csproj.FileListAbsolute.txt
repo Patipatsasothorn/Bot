@@ -690,3 +690,4 @@ D:\Bot\LineBotMVC\LineBotMVC\obj\Debug\net8.0\refint\LineBotMVC.dll
 D:\Bot\LineBotMVC\LineBotMVC\obj\Debug\net8.0\LineBotMVC.pdb
 D:\Bot\LineBotMVC\LineBotMVC\obj\Debug\net8.0\LineBotMVC.genruntimeconfig.cache
 D:\Bot\LineBotMVC\LineBotMVC\obj\Debug\net8.0\ref\LineBotMVC.dll
+D:\Kew\Bot\LineBotMVC\LineBotMVC\bin\Debug\net8.0\SixLabors.ImageSharp.dll

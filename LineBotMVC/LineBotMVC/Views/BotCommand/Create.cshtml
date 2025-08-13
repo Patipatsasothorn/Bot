@@ -634,28 +634,29 @@
             uploadBtn.disabled = true;
             uploadBtn.textContent = 'กำลังอัปโหลด...';
 
-            fetch('/BotCommand/UploadImage', {
-                method: 'POST',
-                body: formData
-            }).then(res => res.json())
-              .then(data => {
-                uploadBtn.disabled = false;
-                uploadBtn.textContent = 'อัปโหลดรูป Image Map';
+                fetch('/BotCommand/UploadImagemap', {
+                    method: 'POST',
+                    body: formData
+                }).then(res => res.json())
+                  .then(data => {
+                    uploadBtn.disabled = false;
+                    uploadBtn.textContent = 'อัปโหลดรูป Image Map';
 
-                if (data.success && data.url) {
-                    alert('อัปโหลดรูปภาพสำเร็จ');
-                    uploadedImageUrl = data.url;
+                    if (data.success && data.baseUrl) {
+                        alert('อัปโหลดรูปภาพสำเร็จ');
+                        uploadedImageUrl = data.baseUrl;
 
-                    // ปุ่มเพิ่ม baseUrl ใช้งานได้
-                    addBaseUrlBtn.disabled = false;
-                } else {
-                    alert('อัปโหลดรูปภาพล้มเหลว: ' + (data.message || ''));
-                }
-              }).catch(() => {
-                uploadBtn.disabled = false;
-                uploadBtn.textContent = 'อัปโหลดรูป Image Map';
-                alert('เกิดข้อผิดพลาดในการอัปโหลดรูป');
-              });
+                        // ปุ่มเพิ่ม baseUrl ใช้งานได้
+                        addBaseUrlBtn.disabled = false;
+                    } else {
+                        alert('อัปโหลดรูปภาพล้มเหลว: ' + (data.message || ''));
+                    }
+                  }).catch(() => {
+                    uploadBtn.disabled = false;
+                    uploadBtn.textContent = 'อัปโหลดรูป Image Map';
+                    alert('เกิดข้อผิดพลาดในการอัปโหลดรูป');
+                  });
+
         });
 
         // ปุ่มเพิ่มรูปเป็น baseUrl
