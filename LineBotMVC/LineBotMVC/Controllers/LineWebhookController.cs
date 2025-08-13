@@ -153,8 +153,8 @@ namespace LineBotMVC.Controllers
                                         dynamic imagemapJson = JsonConvert.DeserializeObject<dynamic>(cmd.ImagesJson);
 
                                         // ดึง folderId และชื่อไฟล์จาก JSON
-                                        string folderId = (string)imagemapJson.folderId; // สมมุติว่าเก็บ folderId ไว้
-                                        string fileName = "1040"; // ตามขนาด 1040
+                                        string folderId = "7be0870a-599a-4031-b11b-b645060f3ea5"; // สมมุติว่าเก็บ folderId ไว้
+                                        string fileName = "1040.png"; // ตามขนาด 1040
 
                                         // สร้าง baseUrl สำหรับ LINE ImageMap (ไม่มี .png)
                                         string baseUrl = $"https://botline.xcoptech.net/uploads/{folderId}/{fileName}";
