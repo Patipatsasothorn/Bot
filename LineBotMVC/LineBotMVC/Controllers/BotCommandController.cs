@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 using System.Linq;
 using System.IO;
 using System;
-using System.Drawing;
+using SixLabors.ImageSharp;
+using SixLabors.ImageSharp.Formats.Png;
+using SixLabors.ImageSharp.Processing;
 
 namespace LineBotMVC.Controllers
 {
@@ -111,36 +113,31 @@ namespace LineBotMVC.Controllers
             var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", folderId);
             Directory.CreateDirectory(uploadFolder);
 
-            // อ่านรูปจาก stream
-            using (var stream = imageFile.OpenReadStream())
-            using (var image = System.Drawing.Image.FromStream(stream))
+            try
             {
-                // บันทึกรูป 3 ขนาด
-                SaveResizedImage(image, Path.Combine(uploadFolder, "1040.png"), 1040, 1040);
-                SaveResizedImage(image, Path.Combine(uploadFolder, "700.png"), 700, 700);
-                SaveResizedImage(image, Path.Combine(uploadFolder, "460.png"), 460, 460);
+                using (var image = await Image.LoadAsync(imageFile.OpenReadStream()))
+                {
+                    await SaveResizedImage(image, Path.Combine(uploadFolder, "1040.png"), 1040, 1040);
+                    await SaveResizedImage(image, Path.Combine(uploadFolder, "700.png"), 700, 700);
+                    await SaveResizedImage(image, Path.Combine(uploadFolder, "460.png"), 460, 460);
+                }
+
+                var baseUrl = $"https://{Request.Host}/uploads/{folderId}";
+                return Json(new { success = true, baseUrl });
             }
-
-            // baseUrl ต้องเป็น HTTPS และไม่ลงท้ายด้วย /1040
-            var baseUrl = $"https://{Request.Host}/uploads/{folderId}";
-
-            return Json(new { success = true, baseUrl });
+            catch (Exception ex)
+            {
+                return Json(new { success = false, message = ex.Message });
+            }
         }
 
-        // ฟังก์ชันย่อรูป
-        private void SaveResizedImage(System.Drawing.Image image, string path, int width, int height)
+        private async Task SaveResizedImage(Image image, string path, int width, int height)
         {
-            using (var newImage = new System.Drawing.Bitmap(width, height))
-            using (var g = System.Drawing.Graphics.FromImage(newImage))
+            using (var clone = image.Clone(ctx => ctx.Resize(width, height)))
             {
-                g.CompositingQuality = System.Drawing.Drawing2D.CompositingQuality.HighQuality;
-                g.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
-                g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality;
-                g.DrawImage(image, 0, 0, width, height);
-                newImage.Save(path, System.Drawing.Imaging.ImageFormat.Png);
+                await clone.SaveAsync(path, new PngEncoder());
             }
         }
-
 
 
 
