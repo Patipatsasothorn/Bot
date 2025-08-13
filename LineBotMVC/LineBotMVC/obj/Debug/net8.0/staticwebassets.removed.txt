@@ -1,8 +1,0 @@
-D:\Bot\LineBotMVC\LineBotMVC\wwwroot\uploads\32f887ec-e683-4b72-ab6a-4e7913a402ca.png
-D:\Bot\LineBotMVC\LineBotMVC\wwwroot\uploads\33a620dc-1fd1-44d0-b5b0-ed4a052dbc22\1040.png
-D:\Bot\LineBotMVC\LineBotMVC\wwwroot\uploads\33a620dc-1fd1-44d0-b5b0-ed4a052dbc22\460.png
-D:\Bot\LineBotMVC\LineBotMVC\wwwroot\uploads\33a620dc-1fd1-44d0-b5b0-ed4a052dbc22\700.png
-D:\Bot\LineBotMVC\LineBotMVC\wwwroot\uploads\44ea12df-875c-4dcd-a09e-1c1a9d737e3e.png
-D:\Bot\LineBotMVC\LineBotMVC\wwwroot\uploads\72d71125-3270-4d41-96be-6ac33857137b.png
-D:\Bot\LineBotMVC\LineBotMVC\wwwroot\uploads\ba9d286c-52bb-42e5-8cf7-fc5bb3ecceb7.png
-D:\Bot\LineBotMVC\LineBotMVC\wwwroot\uploads\dfa7c185-45f4-4ab1-8b46-2e7ba7b61adb.png

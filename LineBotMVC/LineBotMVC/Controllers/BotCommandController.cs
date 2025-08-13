@@ -99,7 +99,6 @@ namespace LineBotMVC.Controllers
             return RedirectToAction("Index");
         }
         [HttpPost]
-        [HttpPost]
         public async Task<IActionResult> UploadImagemap(IFormFile imageFile)
         {
             if (imageFile == null || imageFile.Length == 0)
@@ -113,7 +112,7 @@ namespace LineBotMVC.Controllers
             var folderId = Guid.NewGuid().ToString();
             var uploadFolder = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", folderId);
             Directory.CreateDirectory(uploadFolder);
-                
+
             try
             {
                 using (var image = await Image.LoadAsync(imageFile.OpenReadStream()))
@@ -123,7 +122,9 @@ namespace LineBotMVC.Controllers
                     await SaveResizedImage(image, Path.Combine(uploadFolder, "460.png"), 460, 460);
                 }
 
-                var baseUrl = $"https://{Request.Host}/uploads/{folderId}";
+                // baseUrl ส่งให้ LINE รวมชื่อไฟล์ + .png
+                var baseUrl = $"https://{Request.Host}/uploads/{folderId}/1040.png";
+
                 return Json(new { success = true, baseUrl });
             }
             catch (Exception ex)
@@ -138,12 +139,9 @@ namespace LineBotMVC.Controllers
             using (var clone = image.Clone(ctx => ctx.Resize(width, height)))
             {
                 await clone.SaveAsync(path, new PngEncoder());
-
-                // สร้างไฟล์ duplicate ไม่มีนามสกุล สำหรับ LINE ImageMap
-                var noExtPath = Path.Combine(Path.GetDirectoryName(path), Path.GetFileNameWithoutExtension(path));
-                System.IO.File.Copy(path, noExtPath, overwrite: true);
             }
         }
+
 
 
         // POST: BotCommand/UploadImage
