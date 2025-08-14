@@ -87,96 +87,37 @@ namespace LineBotMVC.Controllers
                                     }
                                     else if (cmd.ResponseType == "carousel")
                                     {
-                                        try
+                                        var images = JsonConvert.DeserializeObject<List<string>>(cmd.ImagesJson);
+                                        var bubbles = images.Select(url => new
                                         {
-                                            var jsonData = cmd.ImagesJson.Trim();
-                                            var imageMaps = JsonConvert.DeserializeObject<List<dynamic>>(jsonData);
-
-                                            // ตรวจสอบว่าเป็น imagemap objects หรือไม่
-                                            if (imageMaps.Count > 0 && imageMaps[0].type != null && imageMaps[0].type.ToString() == "imagemap")
+                                            type = "bubble",
+                                            hero = new
                                             {
-                                                // ส่ง imagemap แต่ละหน้าแยกกัน
-                                                var messages = new List<object>();
+                                                type = "image",
+                                                url = url.StartsWith("http") ? url : $"https://botline.xcoptech.net{url}",
+                                                size = "full",
+                                                aspectRatio = "20:13",
+                                                aspectMode = "cover"
+                                            }
+                                        }).ToList();
 
-                                                foreach (var imageMapData in imageMaps)
-                                                {
-                                                    string baseUrl = imageMapData.baseUrl?.ToString() ?? "";
-
-                                                    // จัดการ baseUrl ให้ถูกต้อง - เพิ่ม .png ถ้าไม่มี extension
-                                                    if (!string.IsNullOrEmpty(baseUrl))
-                                                    {
-                                                        if (!baseUrl.Contains(".png") && !baseUrl.Contains(".jpg") && !baseUrl.Contains(".jpeg"))
-                                                        {
-                                                            baseUrl = $"{baseUrl}.png";
-                                                        }
+                                        var replyCarousel = new
+                                        {
+                                            replyToken = replyToken,
+                                            messages = new[] {
+                                                new {
+                                                    type = "flex",
+                                                    altText = "ภาพเลื่อน",
+                                                    contents = new {
+                                                        type = "carousel",
+                                                        contents = bubbles
                                                     }
-
-                                                    var imagemapMessage = new
-                                                    {
-                                                        type = "imagemap",
-                                                        baseUrl = baseUrl,
-                                                        altText = imageMapData.altText?.ToString() ?? "ImageMap",
-                                                        baseSize = new
-                                                        {
-                                                            width = (int)(imageMapData.baseSize?.width ?? 1040),
-                                                            height = (int)(imageMapData.baseSize?.height ?? 1040)
-                                                        },
-                                                        actions = imageMapData.actions
-                                                    };
-
-                                                    messages.Add(imagemapMessage);
                                                 }
-
-                                                var replyMultipleImagemaps = new
-                                                {
-                                                    replyToken = replyToken,
-                                                    messages = messages.ToArray()
-                                                };
-
-                                                await SendReply(matchedBot.ChannelAccessToken, replyMultipleImagemaps);
                                             }
-                                            else
-                                            {
-                                                // กรณีเป็น array ของ string URLs (วิธีเดิม)
-                                                var images = JsonConvert.DeserializeObject<List<string>>(jsonData);
-                                                var bubbles = images.Select(url => new
-                                                {
-                                                    type = "bubble",
-                                                    hero = new
-                                                    {
-                                                        type = "image",
-                                                        url = url.StartsWith("http") ? url : $"https://botline.xcoptech.net{url}",
-                                                        size = "full",
-                                                        aspectRatio = "20:13",
-                                                        aspectMode = "cover"
-                                                    }
-                                                }).ToList();
+                                        };
 
-                                                var replyCarousel = new
-                                                {
-                                                    replyToken = replyToken,
-                                                    messages = new[] {
-                    new {
-                        type = "flex",
-                        altText = "ภาพเลื่อน",
-                        contents = new {
-                            type = "carousel",
-                            contents = bubbles
-                        }
-                    }
-                }
-                                                };
-
-                                                await ReplyFlex(matchedBot.ChannelAccessToken, replyCarousel);
-                                            }
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            Console.WriteLine($"Error processing carousel: {ex.Message}");
-                                            await ReplyText(matchedBot.ChannelAccessToken, replyToken, "เกิดข้อผิดพลาดในการแสดงภาพ กรุณาลองใหม่อีกครั้ง");
-                                        }
+                                        await ReplyFlex(matchedBot.ChannelAccessToken, replyCarousel);
                                     }
-
                                     else if (cmd.ResponseType == "card")
                                     {
                                         var json = cmd.ImagesJson.Trim();
@@ -267,8 +208,6 @@ namespace LineBotMVC.Controllers
 
             return Ok();
         }
-       
-       
         private string GetCurrentTimeRange()
         {
             var now = DateTime.Now.TimeOfDay;
