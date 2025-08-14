@@ -88,6 +88,7 @@ namespace LineBotMVC.Controllers
                                     else if (cmd.ResponseType == "carousel")
                                     {
                                         var images = JsonConvert.DeserializeObject<List<string>>(cmd.ImagesJson);
+
                                         var bubbles = images.Select(url => new
                                         {
                                             type = "bubble",
@@ -98,6 +99,107 @@ namespace LineBotMVC.Controllers
                                                 size = "full",
                                                 aspectRatio = "20:13",
                                                 aspectMode = "cover"
+                                            },
+                                            body = new
+                                            {
+                                                type = "box",
+                                                layout = "vertical",
+                                                spacing = "sm",
+                                                contents = new object[]
+                                                {
+                new
+                {
+                    type = "text",
+                    text = "เลือกเกมส์",
+                    weight = "bold",
+                    size = "md",
+                    align = "center"
+                },
+                new
+                {
+                    type = "box",
+                    layout = "horizontal",
+                    spacing = "sm",
+                    contents = new object[]
+                    {
+                        new
+                        {
+                            type = "button",
+                            action = new
+                            {
+                                type = "postback",
+                                label = "PG Slot",
+                                data = "game=pg_slot"
+                            },
+                            style = "primary"
+                        },
+                        new
+                        {
+                            type = "button",
+                            action = new
+                            {
+                                type = "postback",
+                                label = "PP Slot",
+                                data = "game=pp_slot"
+                            },
+                            style = "primary"
+                        },
+                        new
+                        {
+                            type = "button",
+                            action = new
+                            {
+                                type = "postback",
+                                label = "Joker",
+                                data = "game=joker"
+                            },
+                            style = "primary"
+                        }
+                    }
+                },
+                new
+                {
+                    type = "box",
+                    layout = "horizontal",
+                    spacing = "sm",
+                    contents = new object[]
+                    {
+                        new
+                        {
+                            type = "button",
+                            action = new
+                            {
+                                type = "postback",
+                                label = "Askme",
+                                data = "game=askme_slot"
+                            },
+                            style = "primary"
+                        },
+                        new
+                        {
+                            type = "button",
+                            action = new
+                            {
+                                type = "postback",
+                                label = "CQ9",
+                                data = "game=cq9"
+                            },
+                            style = "primary"
+                        },
+                        new
+                        {
+                            type = "button",
+                            action = new
+                            {
+                                type = "postback",
+                                label = "Evoplay",
+                                data = "game=evoplay"
+                            },
+                            style = "primary"
+                        }
+                    }
+                }
+                                                }
                                             }
                                         }).ToList();
 
@@ -105,19 +207,20 @@ namespace LineBotMVC.Controllers
                                         {
                                             replyToken = replyToken,
                                             messages = new[] {
-                                                new {
-                                                    type = "flex",
-                                                    altText = "ภาพเลื่อน",
-                                                    contents = new {
-                                                        type = "carousel",
-                                                        contents = bubbles
-                                                    }
-                                                }
-                                            }
+            new {
+                type = "flex",
+                altText = "ภาพเลื่อน",
+                contents = new {
+                    type = "carousel",
+                    contents = bubbles
+                }
+            }
+        }
                                         };
 
                                         await ReplyFlex(matchedBot.ChannelAccessToken, replyCarousel);
                                     }
+
                                     else if (cmd.ResponseType == "card")
                                     {
                                         var json = cmd.ImagesJson.Trim();
