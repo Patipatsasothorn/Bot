@@ -215,7 +215,9 @@ namespace LineBotMVC.Controllers
         }
         private string GetCurrentTimeRange()
         {
-            var now = DateTime.Now.TimeOfDay;
+            var thailandTimeZone = TimeZoneInfo.FindSystemTimeZoneById("Asia/Bangkok");
+            var thailandTime = TimeZoneInfo.ConvertTime(DateTime.UtcNow, thailandTimeZone);
+            var now = thailandTime.TimeOfDay;
 
             if (now >= new TimeSpan(6, 0, 0) && now < new TimeSpan(12, 0, 0))
                 return "morning";
@@ -226,6 +228,7 @@ namespace LineBotMVC.Controllers
             else
                 return "night";
         }
+
 
         // ฟังก์ชันตรวจสอบ signature
         private bool ValidateSignature(string channelSecret, string requestBody, string xLineSignature)
