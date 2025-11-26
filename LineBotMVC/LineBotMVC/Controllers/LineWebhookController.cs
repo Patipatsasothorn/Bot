@@ -59,17 +59,17 @@ namespace LineBotMVC.Controllers
 
                         switch (userMessage)
                         {
-                            case "สวัสดี":
-                                await ReplyText(matchedBot.ChannelAccessToken, replyToken, "สวัสดีค่ะ ยินดีให้บริการค่ะ");
-                                break;
+                            //case "สวัสดี":
+                            //    await ReplyText(matchedBot.ChannelAccessToken, replyToken, "สวัสดีค่ะ ยินดีให้บริการค่ะ");
+                            //    break;
 
-                            case "ช่วยด้วย":
-                                await ReplyText(matchedBot.ChannelAccessToken, replyToken, "คุณสามารถติดต่อแอดมินได้ที่เบอร์ 099-999-9999");
-                                break;
+                            //case "ช่วยด้วย":
+                            //    await ReplyText(matchedBot.ChannelAccessToken, replyToken, "คุณสามารถติดต่อแอดมินได้ที่เบอร์ 099-999-9999");
+                            //    break;
 
-                            case "เมนู":
-                                await ReplyText(matchedBot.ChannelAccessToken, replyToken, "เมนูของเรามี: \n- รายงาน\n- สมัครสมาชิก\n- ติดต่อเรา");
-                                break;
+                            //case "เมนู":
+                            //    await ReplyText(matchedBot.ChannelAccessToken, replyToken, "เมนูของเรามี: \n- รายงาน\n- สมัครสมาชิก\n- ติดต่อเรา");
+                            //    break;
 
                             default:
                                 string timeRange = GetCurrentTimeRange();
@@ -193,21 +193,21 @@ namespace LineBotMVC.Controllers
                                         await ReplyText(matchedBot.ChannelAccessToken, replyToken, "คำสั่งนี้ยังไม่รองรับประเภทข้อความนี้ค่ะ");
                                     }
                                 }
-                                else
-                                {
-                                    await ReplyText(matchedBot.ChannelAccessToken, replyToken, "ขออภัย ฉันไม่เข้าใจคำสั่งนี้ค่ะ");
-                                }
+                                //else
+                                //{
+                                //    await ReplyText(matchedBot.ChannelAccessToken, replyToken, "ขออภัย ฉันไม่เข้าใจคำสั่งนี้ค่ะ");
+                                //}
                                 break;
                         }
                     }
-                    else if (messageType == "sticker")
-                    {
-                        await ReplyText(matchedBot.ChannelAccessToken, replyToken, "คุณส่งสติกเกอร์มา ขอบคุณค่ะ 😊");
-                    }
-                    else if (messageType == "image")
-                    {
-                        await ReplyText(matchedBot.ChannelAccessToken, replyToken, "ได้รับรูปภาพของคุณแล้ว ขอบคุณค่ะ");
-                    }
+                    //else if (messageType == "sticker")
+                    //{
+                    //    await ReplyText(matchedBot.ChannelAccessToken, replyToken, "คุณส่งสติกเกอร์มา ขอบคุณค่ะ 😊");
+                    //}
+                    //else if (messageType == "image")
+                    //{
+                    //    await ReplyText(matchedBot.ChannelAccessToken, replyToken, "ได้รับรูปภาพของคุณแล้ว ขอบคุณค่ะ");
+                    //}
                 }
             }
 
